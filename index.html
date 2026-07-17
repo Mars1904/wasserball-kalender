@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Wasserball Jahresplaner 2026/27</title>
+<meta name="description" content="Interaktiver Jahreskalender Wasserball 2026/27 – Männer, Frauen, Europapokal und Nationalteams. Termine filtern, Tagesdetails und Team-Notizen.">
+<style>
+:root{
+  --bg:#f2f6fa; --card:#ffffff; --ink:#0e1a2b; --muted:#5d6b80; --line:#e2e8f1;
+  --navy:#0b2447; --aqua:#19a7ce;
+  --m-bg:#dbeafe; --m-tx:#153e86; --m-ln:#b0cbf2;
+  --w-bg:#fce7f3; --w-tx:#82205b; --w-ln:#f0bcd9;
+  --n-bg:#dcfce7; --n-tx:#14532d; --n-ln:#b2e2c3;
+  --int:#dc2626;
+  --cl-bg:#ede9fe; --cl-tx:#5b21b6;
+  --ec-bg:#bfdbfe; --ec-tx:#1e3a8a;
+  --chc-bg:#e0f2fe; --chc-tx:#075985;
+  --cc-bg:#ffedd5; --cc-tx:#9a3412;
+  --edit:#b45309; --ok:#15803d;
+  --r:14px; --shadow:0 2px 14px rgba(11,36,71,.07);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+button{font:inherit;cursor:pointer}
+/* ===== Hero ===== */
+.hero{position:relative;overflow:hidden;color:#fff;padding:34px 20px 74px;
+  background:linear-gradient(120deg,#0b2447,#19376d 30%,#146c94 60%,#19a7ce);
+  background-size:280% 280%;animation:heroShift 16s ease-in-out infinite}
+@keyframes heroShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero .inner{max-width:1400px;margin:0 auto;position:relative;z-index:2}
+.hero h1{margin:0;font-size:clamp(24px,4.6vw,40px);font-weight:800;letter-spacing:-.5px;animation:fadeUp .7s .05s both}
+.hero p{margin:8px 0 0;opacity:.85;font-size:clamp(13px,2.4vw,15.5px);max-width:720px;animation:fadeUp .7s .18s both}
+.hero .season{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:4px 14px;font-size:12.5px;font-weight:700;margin-bottom:14px;backdrop-filter:blur(4px);animation:fadeUp .7s both}
+.bubbles{position:absolute;inset:0;z-index:1;pointer-events:none}
+.bubbles span{position:absolute;bottom:-60px;border-radius:50%;background:rgba(255,255,255,.09);
+  animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-130vh) translateX(30px)}}
+.wave{position:absolute;left:0;right:0;bottom:-1px;z-index:2;display:block;width:100%;height:46px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+/* ===== Filterbar ===== */
+.bar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);box-shadow:0 4px 18px rgba(11,36,71,.06)}
+.bar .inner{max-width:1400px;margin:0 auto;padding:10px 16px 12px}
+.bar .title{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.8px;color:var(--muted);margin:2px 0 8px}
+.bar .title .cnt{margin-left:auto;font-weight:700;text-transform:none;letter-spacing:0;color:var(--navy);
+  background:#e8f0fa;border-radius:999px;padding:2px 12px;transition:transform .25s}
+.bar .title .cnt.pop{transform:scale(1.14)}
+.rowflex{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.seg{display:flex;background:#e9eef6;border-radius:12px;padding:3px;position:relative}
+.seg button{border:0;background:transparent;padding:8px 18px;border-radius:10px;font-weight:800;font-size:14px;
+  color:var(--muted);position:relative;z-index:2;transition:color .25s}
+.seg button.act{color:#fff}
+.seg .slider{position:absolute;top:3px;bottom:3px;border-radius:10px;background:var(--navy);z-index:1;
+  transition:left .3s cubic-bezier(.6,1.6,.4,1), width .3s cubic-bezier(.6,1.6,.4,1)}
+.seg button.act[data-v="m"]~.slider{background:#1f5fd0}
+.seg button.act[data-v="w"]~.slider{background:#c2317f}
+.chips{display:flex;gap:7px;flex-wrap:nowrap;overflow-x:auto;padding:2px 2px 6px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+@media(min-width:900px){.chips{flex-wrap:wrap;overflow:visible}}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;
+  font-weight:700;color:var(--muted);white-space:nowrap;transition:all .22s cubic-bezier(.5,1.4,.5,1);user-select:none}
+.chip:active{transform:scale(.93)}
+.chip.act{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-1px);box-shadow:0 3px 10px rgba(11,36,71,.25)}
+.chip.mini{font-weight:600;font-size:12px;padding:5px 11px}
+.viewtog{margin-left:auto;display:flex;gap:4px;background:#e9eef6;border-radius:10px;padding:3px}
+.viewtog button{border:0;background:transparent;border-radius:8px;padding:6px 11px;font-size:12.5px;font-weight:700;color:var(--muted)}
+.viewtog button.act{background:#fff;color:var(--navy);box-shadow:0 1px 4px rgba(11,36,71,.15)}
+/* ===== Legende ===== */
+.legend{max-width:1400px;margin:10px auto 0;padding:0 16px;font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.lg{padding:2px 10px;border-radius:6px;font-weight:700;font-size:11.5px;border:1px solid transparent}
+/* ===== Kalender ===== */
+main{max-width:1400px;margin:14px auto 30px;padding:0 16px}
+.months{display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:16px}
+.month{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:var(--shadow);
+  animation:fadeUp .6s both}
+.month h2{font-size:16px;margin:0 0 10px;color:var(--navy)}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+th{font-size:10.5px;color:var(--muted);font-weight:700;padding:2px 0;text-align:center}
+td{border:1px solid var(--line);vertical-align:top;height:54px;padding:1px;background:#fff;transition:background .2s}
+td.we{background:#f0f4f9}
+td.empty{background:transparent;border-color:transparent}
+td:not(.empty){cursor:pointer}
+td:not(.empty):hover{background:#eaf3fc}
+.dn{font-size:10px;color:var(--muted);padding:1px 3px;font-weight:600}
+.ev{display:block;font-size:10px;line-height:1.3;border-radius:5px;padding:1.5px 5px;margin:1.5px 0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:1px solid transparent;
+  transition:opacity .3s,transform .3s}
+.ev.gone{opacity:0;transform:scale(.85);height:0;padding:0;margin:0;border-width:0;pointer-events:none}
+.ev.m{background:var(--m-bg);color:var(--m-tx);border-color:var(--m-ln)}
+.ev.w{background:var(--w-bg);color:var(--w-tx);border-color:var(--w-ln)}
+.ev.cat-nat,.ev.cat-sonst{background:var(--n-bg);color:var(--n-tx);border-color:var(--n-ln)}
+.ev.cat-cl,.ev.cat-ec,.ev.cat-cc,.ev.cat-chc{border:1.5px solid var(--int)}
+body.single .ev.cat-cl{background:var(--cl-bg);color:var(--cl-tx)}
+body.single .ev.cat-ec{background:var(--ec-bg);color:var(--ec-tx)}
+body.single .ev.cat-chc{background:var(--chc-bg);color:var(--chc-tx)}
+body.single .ev.cat-cc{background:var(--cc-bg);color:var(--cc-tx)}
+.ev.u{border-style:dashed}
+.ev.struck{text-decoration:line-through;opacity:.5}
+.ev .nti{font-size:8.5px}
+/* ===== Agenda (mobil) ===== */
+.agenda{display:none}
+.agenda .amonth{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);
+  margin-bottom:14px;padding:6px 0;animation:fadeUp .5s both}
+.agenda h2{font-size:15px;margin:8px 14px;color:var(--navy)}
+.arow{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;border-top:1px solid var(--line);cursor:pointer;
+  transition:background .2s}
+.arow:hover{background:#eaf3fc}
+.arow.gone{display:none}
+.adate{min-width:52px;text-align:center;background:#eef3fa;border-radius:10px;padding:5px 4px}
+.adate b{display:block;font-size:16px;color:var(--navy);line-height:1.1}
+.adate span{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase}
+.abody{flex:1;min-width:0}
+.abody .t{font-weight:700;font-size:14px;line-height:1.3}
+.abody .t.struck{text-decoration:line-through;opacity:.55}
+.abody .meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.tag{font-size:10.5px;font-weight:700;border-radius:6px;padding:1.5px 8px;border:1px solid transparent}
+.anote{font-size:11px;color:var(--muted);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.mob .months{display:none}
+body.mob .agenda{display:block}
+@media(max-width:719px){
+  body:not(.forcegrid) .months{display:none}
+  body:not(.forcegrid) .agenda{display:block}
+  .hero{padding:24px 16px 60px}
+}
+/* ===== Modal / Sheet ===== */
+.overlay{position:fixed;inset:0;background:rgba(8,18,35,.5);z-index:100;display:none;align-items:center;justify-content:center;padding:20px;
+  animation:fade .25s both}
+.overlay.open{display:flex}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modal{background:#fff;border-radius:18px;max-width:560px;width:100%;max-height:86vh;overflow:auto;padding:20px;
+  box-shadow:0 24px 70px rgba(5,15,35,.4);animation:pop .32s cubic-bezier(.4,1.5,.4,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.92) translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:719px){
+  .overlay{align-items:flex-end;padding:0}
+  .modal{border-radius:18px 18px 0 0;max-height:88vh;animation:sheet .34s cubic-bezier(.35,1.3,.4,1) both}
+  @keyframes sheet{from{transform:translateY(60%)}to{transform:none}}
+}
+.modal h3{margin:0 0 12px;font-size:17px;color:var(--navy)}
+.modal label{display:block;font-size:12px;font-weight:800;color:var(--muted);margin:10px 0 4px}
+.modal input[type=text],.modal input[type=date],.modal input[type=password],.modal select,.modal textarea{
+  width:100%;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:15px;background:#fbfcfe;
+  transition:border-color .2s}
+.modal input:focus,.modal select:focus,.modal textarea:focus{outline:0;border-color:var(--aqua)}
+.modal textarea{resize:vertical;min-height:56px}
+.gr2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.segf{display:flex;gap:6px}
+.segf .opt{flex:1;border:2px solid var(--line);border-radius:10px;padding:9px 4px;text-align:center;font-size:13.5px;font-weight:800;
+  color:var(--muted);user-select:none;transition:all .2s;cursor:pointer}
+.segf .opt.selm{border-color:#1f5fd0;color:#1f5fd0;background:var(--m-bg)}
+.segf .opt.selw{border-color:#c2317f;color:#c2317f;background:var(--w-bg)}
+.segf .opt.selx{border-color:#15803d;color:#15803d;background:var(--n-bg)}
+.chk{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:14px}
+.acts{display:flex;gap:10px;margin-top:16px;justify-content:flex-end;flex-wrap:wrap}
+.btn{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:10px 16px;font-weight:700;font-size:14px;
+  transition:transform .15s}
+.btn:active{transform:scale(.96)}
+.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn.warn{color:#b91c1c;border-color:#f3c2c2}
+.btn.small{padding:6px 12px;font-size:12.5px}
+/* Termin-Detailkarte */
+.dcard{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0}
+.dcard .t{font-weight:800;font-size:15.5px}
+.dcard .t.struck{text-decoration:line-through;opacity:.6}
+.dcard .period{font-size:12.5px;color:var(--muted);margin:2px 0 6px}
+.notebox{background:#f6f9fc;border-radius:10px;padding:8px 11px;font-size:13px;margin-top:8px}
+.nlist{margin-top:10px}
+.nitem{background:#fffbeb;border:1px solid #fde9b8;border-radius:10px;padding:8px 11px;font-size:13px;margin:6px 0;animation:fadeUp .3s both}
+.nitem .who{font-size:11px;color:#92700c;font-weight:700;margin-top:3px}
+/* PIN */
+.pinbox{display:flex;gap:10px;justify-content:center;margin:14px 0 4px}
+.pinbox input{width:150px;text-align:center;font-size:26px;letter-spacing:12px;font-weight:800}
+.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:none}20%,60%{transform:translateX(-9px)}40%,80%{transform:translateX(9px)}}
+/* FAB + Edit-Status */
+.fab{position:fixed;right:18px;bottom:18px;z-index:90;width:58px;height:58px;border-radius:50%;border:0;
+  background:linear-gradient(135deg,#146c94,#19a7ce);color:#fff;font-size:30px;font-weight:700;box-shadow:0 8px 24px rgba(20,108,148,.45);
+  display:none;align-items:center;justify-content:center;transition:transform .2s}
+.fab:hover{transform:scale(1.08)}
+body.unlocked .fab{display:flex}
+.lockbtn{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:700;color:var(--muted)}
+body.unlocked .lockbtn{background:#ecfdf3;border-color:#a7dbbd;color:var(--ok)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--navy);color:#fff;
+  border-radius:12px;padding:11px 20px;font-size:13.5px;z-index:300;opacity:0;transition:all .35s cubic-bezier(.4,1.4,.4,1);pointer-events:none;max-width:90vw}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;
+  animation:sp 0.8s linear infinite;vertical-align:-2px;margin-right:7px}
+@keyframes sp{to{transform:rotate(360deg)}}
+footer{max-width:1400px;margin:10px auto 26px;padding:0 16px;color:var(--muted);font-size:11.5px}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="bubbles" id="bubbles"></div>
+  <div class="inner">
+    <span class="season">Saison 2026/2027 · Stand laut Team-Planung</span>
+    <h1>🤽 Wasserball Jahresplaner</h1>
+    <p>Alle Termine der Saison: Bundesliga, Pokal, Europapokal und Nationalteams. Unten filtern, Tag antippen für Details und Team-Notizen.</p>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 46" preserveAspectRatio="none"><path d="M0,20 C240,46 480,0 720,14 C960,28 1200,44 1440,18 L1440,46 L0,46 Z" fill="#f2f6fa"/></svg>
+</div>
+
+<div class="bar">
+  <div class="inner">
+    <div class="title">Termine filtern
+      <button class="lockbtn" id="btn-lock">🔒 Bearbeiten</button>
+      <span class="cnt" id="count">…</span>
+    </div>
+    <div class="rowflex" style="margin-bottom:8px">
+      <div class="seg" id="seg-g">
+        <button data-v="all" class="act">Alle</button>
+        <button data-v="m">Männer</button>
+        <button data-v="w">Frauen</button>
+        <span class="slider" id="seg-slider"></span>
+      </div>
+      <div class="viewtog" id="viewtog">
+        <button data-v="auto" class="act">Auto</button>
+        <button data-v="grid">Raster</button>
+        <button data-v="list">Liste</button>
+      </div>
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+</div>
+
+<div class="legend" id="legend"></div>
+
+<main>
+  <div class="months" id="months"></div>
+  <div class="agenda" id="agenda"></div>
+</main>
+
+<button class="fab" id="fab" title="Neuen Termin anlegen">+</button>
+
+<footer>
+  Basis: DSV-Jahresplan Wettkampfsport Wasserball 2026/27 mit Team-Anpassungen · Jugend-Wettbewerbe nicht enthalten ·
+  Änderungen und Notizen werden zentral gespeichert und sind für alle sichtbar. Bearbeiten nur mit Team-Code.
+</footer>
+
+<!-- PIN -->
+<div class="overlay" id="ov-pin">
+  <div class="modal" style="max-width:360px" id="pin-modal">
+    <div id="pin-normal">
+      <h3>Team-Code eingeben</h3>
+      <p style="font-size:13.5px;color:var(--muted);margin:0">Zum Bearbeiten und für Notizen wird der 4-stellige Team-Code benötigt.</p>
+      <div class="pinbox"><input type="password" id="pin-input" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="····"></div>
+      <p id="pin-err" style="color:#b91c1c;font-size:13px;text-align:center;min-height:18px;margin:4px 0"></p>
+      <div class="acts"><button class="btn" id="pin-cancel">Abbrechen</button><button class="btn primary" id="pin-ok">Freischalten</button></div>
+    </div>
+    <div id="pin-setup" style="display:none">
+      <h3>Einmalige Einrichtung</h3>
+      <p style="font-size:13px;color:var(--muted);margin:0 0 6px">Die Speicherung ist noch nicht eingerichtet. GitHub-Zugriffs-Token einfügen und Team-Code festlegen. Der Token wird mit dem Code verschlüsselt im Kalender-Speicher abgelegt.</p>
+      <label>GitHub-Token</label>
+      <input type="password" id="setup-token" autocomplete="off" placeholder="github_pat_…">
+      <label>Team-Code (4 Ziffern)</label>
+      <input type="password" id="setup-pin" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="····">
+      <p id="setup-err" style="color:#b91c1c;font-size:13px;min-height:18px;margin:6px 0 0"></p>
+      <div class="acts"><button class="btn" id="setup-cancel">Abbrechen</button><button class="btn primary" id="setup-ok">Einrichten</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- Tages-/Termin-Detail -->
+<div class="overlay" id="ov-day">
+  <div class="modal">
+    <h3 id="day-title"></h3>
+    <div id="day-list"></div>
+    <div class="acts"><button class="btn" data-close="ov-day">Schließen</button></div>
+  </div>
+</div>
+
+<!-- Termin anlegen/bearbeiten -->
+<div class="overlay" id="ov-form">
+  <div class="modal">
+    <h3 id="form-title">Neuen Termin eintragen</h3>
+    <label>Titel</label>
+    <input type="text" id="f-label" placeholder="z. B. BL Frauen – Nachholspiel">
+    <div class="gr2">
+      <div><label>Von</label><input type="date" id="f-start" min="2026-09-01" max="2027-08-31"></div>
+      <div><label>Bis (optional)</label><input type="date" id="f-end" min="2026-09-01" max="2027-08-31"></div>
+    </div>
+    <label>Gilt für</label>
+    <div class="segf" id="f-gender">
+      <div class="opt" data-v="m">Männer</div>
+      <div class="opt" data-v="w">Frauen</div>
+      <div class="opt" data-v="x">DSV / beide</div>
+    </div>
+    <div class="gr2">
+      <div><label>Wettkampf</label><select id="f-comp"></select></div>
+      <div><label>Status</label><select id="f-status"><option value="fest">festgesetzt</option><option value="unsicher">unsicher (?)</option></select></div>
+    </div>
+    <label>Beschreibung / Hinweis (optional)</label>
+    <textarea id="f-note"></textarea>
+    <div class="acts">
+      <button class="btn" data-close="ov-form">Abbrechen</button>
+      <button class="btn primary" id="f-save">Speichern</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+/* ================= Konfiguration (wird beim Einrichten befüllt) ================= */
+const GH = {
+  owner: "Mars1904",
+  repo: "wasserball-kalender",
+  branch: "main",
+  path: "data/events.json",
+  cfgPath: "data/config.json",
+  enc: null   /* {salt, iv, ct} – Token, AES-verschlüsselt mit dem Team-Code; wird aus data/config.json geladen */
+};
+
+const CATS = {
+  bl1:"1. Bundesliga", bl2:"2. Bundesliga", blf:"Bundesliga Frauen", pok:"DSV-Pokal / Supercup",
+  cl:"Champions League", ec:"Euro Cup", cc:"Conference Cup", chc:"Challenger Cup",
+  nat:"Nationalteams", sonst:"Verband / Sonstiges"
+};
+const ZTXT = {m:"Männer", w:"Frauen", x:"DSV-Maßnahme"};
+const MONTHS = [[2026,8],[2026,9],[2026,10],[2026,11],[2027,0],[2027,1],[2027,2],[2027,3],[2027,4],[2027,5],[2027,6],[2027,7]];
+const MN = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+const DOW = ["Mo","Di","Mi","Do","Fr","Sa","So"];
+const WD = ["Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"];
+
+let DATA = null;          // {version, nextId, events:[...]}
+let TOKEN = null;         // entschlüsselter GitHub-Token
+const state = {g:"all", cats:{}, view:"auto"};
+for(const k in CATS) state.cats[k] = true;
+
+/* ================= Helfer ================= */
+const $ = id => document.getElementById(id);
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");}
+function parseD(d){const p=d.split("-").map(Number);return new Date(p[0],p[1]-1,p[2]);}
+function keyD(dt){return dt.getFullYear()+"-"+String(dt.getMonth()+1).padStart(2,"0")+"-"+String(dt.getDate()).padStart(2,"0");}
+function fmtD(iso){const p=iso.split("-");return p[2]+"."+p[1]+"."+p[0];}
+function toast(msg, spin){
+  const t = $("toast");
+  t.innerHTML = (spin?'<span class="spin"></span>':"") + esc(msg);
+  t.classList.add("show");
+  clearTimeout(t._h);
+  if(!spin) t._h = setTimeout(()=>t.classList.remove("show"), 2800);
+}
+function hideToast(){ $("toast").classList.remove("show"); }
+function b64encUtf8(s){ return btoa(unescape(encodeURIComponent(s))); }
+function b64decUtf8(s){ return decodeURIComponent(escape(atob(s.replace(/\s/g,"")))); }
+
+/* ================= Daten laden / speichern ================= */
+async function loadData(){
+  try{
+    const r = await fetch(GH.path + "?ts=" + Date.now(), {cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    DATA = await r.json();
+  }catch(e){
+    toast("Termine konnten nicht geladen werden. Bitte Seite neu laden.");
+    DATA = DATA || {version:1, nextId:1, events:[]};
+  }
+  try{
+    const c = await fetch(GH.cfgPath + "?ts=" + Date.now(), {cache:"no-store"});
+    if(c.ok){ const j = await c.json(); if(j && j.enc) GH.enc = j.enc; }
+  }catch(e){}
+  renderAll();
+}
+async function ghGet(){
+  const r = await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${encodeURIComponent(GH.path)}?ref=${GH.branch}`,{
+    headers:{Authorization:"Bearer "+TOKEN, Accept:"application/vnd.github+json"}, cache:"no-store"});
+  if(!r.ok) throw new Error("Lesen fehlgeschlagen ("+r.status+")");
+  const j = await r.json();
+  return {sha:j.sha, data:JSON.parse(b64decUtf8(j.content))};
+}
+async function ghPut(data, sha, msg){
+  const r = await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${encodeURIComponent(GH.path)}`,{
+    method:"PUT",
+    headers:{Authorization:"Bearer "+TOKEN, Accept:"application/vnd.github+json","Content-Type":"application/json"},
+    body:JSON.stringify({message:msg, branch:GH.branch, sha, content:b64encUtf8(JSON.stringify(data,null,1))})
+  });
+  if(!r.ok) throw new Error("Speichern fehlgeschlagen ("+r.status+")");
+}
+/* op: Funktion, die das frische data-Objekt mutiert */
+async function saveOp(op, msg){
+  if(!TOKEN){ openPin(); throw new Error("gesperrt"); }
+  toast("Speichern …", true);
+  let tries = 0;
+  while(true){
+    tries++;
+    try{
+      const cur = await ghGet();
+      op(cur.data);
+      cur.data.updated = new Date().toISOString();
+      await ghPut(cur.data, cur.sha, msg);
+      DATA = cur.data;
+      hideToast(); toast("Gespeichert ✓ (für alle sichtbar)");
+      renderAll();
+      return;
+    }catch(e){
+      if(tries >= 2){ hideToast(); toast("Fehler: "+e.message); throw e; }
+    }
+  }
+}
+
+/* ================= PIN / Token ================= */
+async function tryUnlock(pin){
+  const te = new TextEncoder();
+  const b64 = s => Uint8Array.from(atob(s), c=>c.charCodeAt(0));
+  const keyMat = await crypto.subtle.importKey("raw", te.encode(pin), "PBKDF2", false, ["deriveKey"]);
+  const key = await crypto.subtle.deriveKey(
+    {name:"PBKDF2", salt:b64(GH.enc.salt), iterations:150000, hash:"SHA-256"},
+    keyMat, {name:"AES-GCM", length:256}, false, ["decrypt"]);
+  const pt = await crypto.subtle.decrypt({name:"AES-GCM", iv:b64(GH.enc.iv)}, key, b64(GH.enc.ct));
+  return new TextDecoder().decode(pt);
+}
+function openPin(){
+  const setup = !GH.enc;
+  $("pin-normal").style.display = setup ? "none" : "block";
+  $("pin-setup").style.display = setup ? "block" : "none";
+  $("ov-pin").classList.add("open");
+  if(!setup){ $("pin-input").value=""; $("pin-err").textContent=""; setTimeout(()=>$("pin-input").focus(),100); }
+}
+async function doSetup(){
+  const tok = $("setup-token").value.trim();
+  const pin = $("setup-pin").value.trim();
+  const err = $("setup-err");
+  if(!tok.startsWith("github_pat_") && !tok.startsWith("ghp_")){ err.textContent = "Das sieht nicht nach einem GitHub-Token aus."; return; }
+  if(!/^\d{4}$/.test(pin)){ err.textContent = "Bitte einen 4-stelligen Code festlegen."; return; }
+  err.textContent = "";
+  try{
+    // Token prüfen
+    const t = await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}`, {headers:{Authorization:"Bearer "+tok, Accept:"application/vnd.github+json"}});
+    if(!t.ok) throw new Error("Token wird von GitHub nicht akzeptiert ("+t.status+")");
+    // Verschlüsseln (PBKDF2 + AES-GCM)
+    const te = new TextEncoder();
+    const salt = crypto.getRandomValues(new Uint8Array(16));
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const km = await crypto.subtle.importKey("raw", te.encode(pin), "PBKDF2", false, ["deriveKey"]);
+    const key = await crypto.subtle.deriveKey({name:"PBKDF2", salt, iterations:150000, hash:"SHA-256"}, km, {name:"AES-GCM", length:256}, false, ["encrypt"]);
+    const ct = new Uint8Array(await crypto.subtle.encrypt({name:"AES-GCM", iv}, key, te.encode(tok)));
+    const b64 = a => btoa(String.fromCharCode.apply(null, Array.from(a)));
+    const enc = {salt:b64(salt), iv:b64(iv), ct:b64(ct)};
+    // config.json schreiben (mit dem eingegebenen Token)
+    let sha;
+    const g = await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${encodeURIComponent(GH.cfgPath)}?ref=${GH.branch}`, {headers:{Authorization:"Bearer "+tok, Accept:"application/vnd.github+json"}, cache:"no-store"});
+    if(g.ok){ sha = (await g.json()).sha; }
+    const body = {message:"Kalender-Einrichtung", branch:GH.branch, content:b64encUtf8(JSON.stringify({enc}))};
+    if(sha) body.sha = sha;
+    const p = await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${encodeURIComponent(GH.cfgPath)}`, {
+      method:"PUT", headers:{Authorization:"Bearer "+tok, Accept:"application/vnd.github+json","Content-Type":"application/json"}, body:JSON.stringify(body)});
+    if(!p.ok) throw new Error("Speichern der Einrichtung fehlgeschlagen ("+p.status+")");
+    GH.enc = enc; TOKEN = tok;
+    try{ sessionStorage.setItem("wpk-pin", pin); }catch(e){}
+    document.body.classList.add("unlocked");
+    $("btn-lock").textContent = "🔓 Bearbeitung aktiv";
+    $("ov-pin").classList.remove("open");
+    toast("Einrichtung abgeschlossen – Bearbeitung aktiv.");
+  }catch(e){ err.textContent = e.message; }
+}
+async function submitPin(){
+  const pin = $("pin-input").value.trim();
+  try{
+    TOKEN = await tryUnlock(pin);
+    try{ sessionStorage.setItem("wpk-pin", pin); }catch(e){}
+    document.body.classList.add("unlocked");
+    $("btn-lock").textContent = "🔓 Bearbeitung aktiv";
+    $("ov-pin").classList.remove("open");
+    toast("Bearbeitung freigeschaltet.");
+  }catch(e){
+    $("pin-err").textContent = "Falscher Code.";
+    $("pin-modal").classList.add("shake");
+    setTimeout(()=>$("pin-modal").classList.remove("shake"), 450);
+  }
+}
+async function restorePin(){
+  try{
+    const pin = sessionStorage.getItem("wpk-pin");
+    if(pin){ TOKEN = await tryUnlock(pin); document.body.classList.add("unlocked"); $("btn-lock").textContent="🔓 Bearbeitung aktiv"; }
+  }catch(e){}
+}
+
+/* ================= Anzeige-Logik ================= */
+function visible(ev){
+  const gOK = ev.g==="x" ? true : (state.g==="all" || state.g===ev.g);
+  return gOK && state.cats[ev.cat];
+}
+function shorten(l){
+  return String(l)
+    .replace("Champions League","CL").replace("EC-Qualifikation","EC Quali").replace("CL-Qualifikation","CL Quali")
+    .replace(" Männer","").replace(" Frauen","")
+    .replace("DSV-Pokal","Pokal").replace("Qualifikation","Quali").replace("EM-Qualifikation","EM-Quali")
+    .replace(" Playoffs","").replace("Vorrunde ","VR ")
+    .replace("Viertelfinalrunde","VF-Runde").replace("Viertelfinale","VF").replace("Halbfinale","HF")
+    .replace("Hinspiel","HS").replace("Rückspiel","RS")
+    .replace(/(\d+)\. Spieltag/,"ST $1").replace("Spiel ","Sp. ")
+    .replace(" (Termin offen)"," ?").replace(" (falls nötig)","")
+    .replace(/\((Potsdam & Cannstatt|ASCD & Sharks|Waspo|Spandau|Chemnitz)\)/,"")
+    .replace("Mitgliederversammlung (MV)","MV").replace("SR- und Beobachter-Lehrgang","SR-Lehrgang")
+    .replace("1. BL","1.BL").replace("2. BL","2.BL")
+    .replace(/ – /g," ").replace(/\s+/g," ").trim();
+}
+function evClass(ev){
+  return ["ev", ev.g, "cat-"+ev.cat,
+    ev.status==="unsicher"?"u":"",
+    ev.struck?"struck":""].filter(Boolean).join(" ");
+}
+function tagStyle(ev){
+  const single = state.g!=="all";
+  if(ev.cat==="nat"||ev.cat==="sonst") return "background:var(--n-bg);color:var(--n-tx);border-color:var(--n-ln)";
+  if(single){
+    if(ev.cat==="cl") return "background:var(--cl-bg);color:var(--cl-tx);border-color:var(--int)";
+    if(ev.cat==="ec") return "background:var(--ec-bg);color:var(--ec-tx);border-color:var(--int)";
+    if(ev.cat==="chc") return "background:var(--chc-bg);color:var(--chc-tx);border-color:var(--int)";
+    if(ev.cat==="cc") return "background:var(--cc-bg);color:var(--cc-tx);border-color:var(--int)";
+  }
+  const base = ev.g==="w" ? "background:var(--w-bg);color:var(--w-tx);border-color:var(--w-ln)" :
+               "background:var(--m-bg);color:var(--m-tx);border-color:var(--m-ln)";
+  return base + (["cl","ec","cc","chc"].includes(ev.cat) ? ";border-color:var(--int)" : "");
+}
+
+let DAYMAP = {};
+function renderAll(){
+  if(!DATA) return;
+  // Tag-Zuordnung
+  DAYMAP = {};
+  for(const ev of DATA.events){
+    let d = parseD(ev.start); const end = parseD(ev.end||ev.start); let first = true; let n = 0;
+    while(d<=end && n<400){
+      (DAYMAP[keyD(d)] = DAYMAP[keyD(d)]||[]).push({ev, first});
+      first = false; n++;
+      d = new Date(d.getFullYear(), d.getMonth(), d.getDate()+1);
+    }
+  }
+  renderGrid(); renderAgenda(); applyFilter();
+}
+function renderGrid(){
+  let html = "";
+  MONTHS.forEach((ym,mi)=>{
+    const y=ym[0], m=ym[1];
+    html += `<div class="month" style="animation-delay:${Math.min(mi*0.05,0.4)}s"><h2>${MN[m]} ${y}</h2><table><tr>`+DOW.map(d=>`<th>${d}</th>`).join("")+`</tr>`;
+    const firstDow = (new Date(y,m,1).getDay()+6)%7;
+    const days = new Date(y,m+1,0).getDate();
+    let cell=0; html+="<tr>";
+    for(let i=0;i<firstDow;i++){html+='<td class="empty"></td>';cell++;}
+    for(let d=1;d<=days;d++){
+      const dt = new Date(y,m,d), k = keyD(dt), dow=(dt.getDay()+6)%7;
+      let inner = `<div class="dn">${d}</div>`;
+      for(const it of (DAYMAP[k]||[])){
+        const ev = it.ev;
+        inner += `<span class="${evClass(ev)}${it.first?"":" cont"}" data-id="${ev.id}" data-g="${ev.g}" data-cat="${ev.cat}" title="${esc(ev.label)}">`
+              + esc(shorten(ev.label)) + (ev.notes && ev.notes.length? ' <span class="nti">💬'+ev.notes.length+'</span>':"") + `</span>`;
+      }
+      html += `<td class="${dow>=5?"we":""}" data-date="${k}">${inner}</td>`;
+      cell++;
+      if(cell%7===0 && d<days) html+="</tr><tr>";
+    }
+    while(cell%7!==0){html+='<td class="empty"></td>';cell++;}
+    html += "</tr></table></div>";
+  });
+  $("months").innerHTML = html;
+}
+function renderAgenda(){
+  let html = "";
+  MONTHS.forEach((ym,mi)=>{
+    const y=ym[0], m=ym[1];
+    const evs = DATA.events
+      .filter(ev=>{const s=parseD(ev.start), e=parseD(ev.end||ev.start);return s<=new Date(y,m+1,0) && e>=new Date(y,m,1);})
+      .sort((a,b)=>a.start<b.start?-1:1);
+    html += `<div class="amonth" style="animation-delay:${Math.min(mi*0.04,0.3)}s"><h2>${MN[m]} ${y}</h2>`;
+    if(!evs.length) html += `<div class="arow" style="cursor:default;color:var(--muted);font-size:13px">Keine Termine</div>`;
+    for(const ev of evs){
+      const sd = parseD(ev.start);
+      const inMonth = sd.getMonth()===m && sd.getFullYear()===y;
+      const showD = inMonth ? sd : new Date(y,m,1);
+      html += `<div class="arow" data-id="${ev.id}" data-g="${ev.g}" data-cat="${ev.cat}">
+        <div class="adate"><b>${inMonth?sd.getDate():"→"}</b><span>${inMonth?WD[(sd.getDay()+6)%7].slice(0,2):"ff."}</span></div>
+        <div class="abody">
+          <div class="t${ev.struck?" struck":""}">${esc(ev.label)}${ev.status==="unsicher"?" <span style='color:#b45309'>?</span>":""}</div>
+          <div class="meta">
+            <span class="tag" style="${tagStyle(ev)}">${esc(CATS[ev.cat])}</span>
+            <span class="tag" style="background:#eef2f7;color:var(--muted)">${ZTXT[ev.g]}</span>
+            <span class="tag" style="background:#eef2f7;color:var(--muted)">${fmtD(ev.start)}${ev.end&&ev.end!==ev.start?" – "+fmtD(ev.end):""}</span>
+            ${ev.notes&&ev.notes.length?`<span class="tag" style="background:#fff7e0;color:#92700c">💬 ${ev.notes.length}</span>`:""}
+          </div>
+          ${ev.note?`<div class="anote">${esc(ev.note)}</div>`:""}
+        </div></div>`;
+    }
+    html += "</div>";
+  });
+  $("agenda").innerHTML = html;
+}
+function applyFilter(){
+  document.body.classList.toggle("single", state.g!=="all");
+  let n = 0;
+  document.querySelectorAll("#months .ev").forEach(el=>{
+    const ev = findEv(el.getAttribute("data-id"));
+    el.classList.toggle("gone", !(ev && visible(ev)));
+  });
+  document.querySelectorAll("#agenda .arow[data-id]").forEach(el=>{
+    const ev = findEv(el.getAttribute("data-id"));
+    el.classList.toggle("gone", !(ev && visible(ev)));
+  });
+  for(const ev of DATA.events) if(visible(ev)) n++;
+  const c = $("count");
+  c.textContent = n + " Termine";
+  c.classList.add("pop"); setTimeout(()=>c.classList.remove("pop"),260);
+  renderLegend();
+}
+function findEv(id){ return DATA.events.find(e=>e.id===id); }
+function renderLegend(){
+  const single = state.g!=="all";
+  let h = "";
+  if(!single){
+    h += `<span class="lg" style="background:var(--m-bg);color:var(--m-tx)">Männer</span>
+          <span class="lg" style="background:var(--w-bg);color:var(--w-tx)">Frauen</span>
+          <span class="lg" style="background:var(--n-bg);color:var(--n-tx)">Nationalteam / DSV</span>
+          <span class="lg" style="border-color:var(--int)">international = rot umrandet</span>`;
+  } else {
+    h += `<span class="lg" style="background:var(--cl-bg);color:var(--cl-tx)">Champions League</span>
+          <span class="lg" style="background:var(--ec-bg);color:var(--ec-tx)">Euro Cup</span>
+          <span class="lg" style="background:var(--chc-bg);color:var(--chc-tx)">Challenger Cup</span>
+          <span class="lg" style="background:var(--cc-bg);color:var(--cc-tx)">Conference Cup</span>
+          <span class="lg" style="background:var(--n-bg);color:var(--n-tx)">Nationalteam / DSV</span>`;
+  }
+  h += `<span style="font-size:11.5px">· gestrichelt = unsicher (?) · Tag/Termin antippen für Details &amp; Notizen</span>`;
+  $("legend").innerHTML = h;
+}
+
+/* ================= Tages-Detail ================= */
+let dayCtx = null;
+function openDay(dateStr){
+  const items = (DAYMAP[dateStr]||[]).filter(it=>visible(it.ev));
+  dayCtx = dateStr;
+  const dt = parseD(dateStr);
+  $("day-title").textContent = WD[(dt.getDay()+6)%7]+", "+fmtD(dateStr);
+  renderDayList(items.map(it=>it.ev));
+  $("ov-day").classList.add("open");
+}
+function openEvent(id){
+  const ev = findEv(id); if(!ev) return;
+  dayCtx = null;
+  $("day-title").textContent = "Termin-Details";
+  renderDayList([ev]);
+  $("ov-day").classList.add("open");
+}
+function renderDayList(evs){
+  const box = $("day-list");
+  if(!evs.length){ box.innerHTML = '<p style="color:var(--muted)">Keine (sichtbaren) Termine an diesem Tag.</p>'; return; }
+  box.innerHTML = evs.map(ev=>{
+    const period = ev.start===(ev.end||ev.start) ? fmtD(ev.start) : fmtD(ev.start)+" bis "+fmtD(ev.end);
+    const notes = (ev.notes||[]).map(n=>`<div class="nitem">${esc(n.t)}<div class="who">${esc(n.by||"Team")} · ${n.at?fmtD(n.at.slice(0,10)):""}</div></div>`).join("");
+    return `<div class="dcard" data-id="${ev.id}">
+      <div class="t${ev.struck?" struck":""}">${esc(ev.label)}</div>
+      <div class="period">${period}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span class="tag" style="${tagStyle(ev)}">${esc(CATS[ev.cat])}</span>
+        <span class="tag" style="background:#eef2f7;color:var(--muted)">${ZTXT[ev.g]}</span>
+        ${ev.status==="unsicher"?'<span class="tag" style="background:#fff3cd;color:#92700c">Termin unsicher ?</span>':""}
+        ${ev.struck?'<span class="tag" style="background:#fee2e2;color:#b91c1c">gestrichen</span>':""}
+      </div>
+      ${ev.note?`<div class="notebox"><b>Hinweis:</b> ${esc(ev.note)}</div>`:""}
+      <div class="nlist">${notes}</div>
+      <div class="acts" style="justify-content:flex-start">
+        <button class="btn small" data-act="note" data-id="${ev.id}">💬 Notiz schreiben</button>
+        <button class="btn small" data-act="strike" data-id="${ev.id}">${ev.struck?"Streichung aufheben":"Durchstreichen"}</button>
+        <button class="btn small warn" data-act="del" data-id="${ev.id}">Löschen</button>
+      </div>
+      <div class="noteform" id="nf-${ev.id}" style="display:none">
+        <label>Neue Notiz</label>
+        <textarea id="nt-${ev.id}" placeholder="z. B. Treffpunkt 9:00 Schwimmhalle …"></textarea>
+        <label>Dein Name (optional)</label>
+        <input type="text" id="nn-${ev.id}" value="${esc(localStorage.getItem("wpk-name")||"")}">
+        <div class="acts"><button class="btn primary small" data-act="notesave" data-id="${ev.id}">Notiz speichern</button></div>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+/* ================= Formular ================= */
+let genderSel = "w";
+function setGender(v){
+  genderSel = v;
+  document.querySelectorAll("#f-gender .opt").forEach(o=>{
+    o.classList.remove("selm","selw","selx");
+    if(o.getAttribute("data-v")===v) o.classList.add("sel"+v);
+  });
+}
+function openForm(dateStr){
+  $("f-label").value=""; $("f-start").value=dateStr||""; $("f-end").value="";
+  $("f-note").value=""; $("f-status").value="fest"; setGender("w");
+  $("ov-form").classList.add("open");
+  setTimeout(()=>$("f-label").focus(),100);
+}
+async function saveForm(){
+  const label = $("f-label").value.trim();
+  const start = $("f-start").value;
+  let end = $("f-end").value || start;
+  if(!label) return toast("Bitte einen Titel eingeben.");
+  if(!start) return toast("Bitte ein Datum wählen.");
+  if(end < start) end = start;
+  const ev = {g:genderSel, cat:$("f-comp").value, start, end, label,
+              note:$("f-note").value.trim(), status:$("f-status").value, struck:false, notes:[]};
+  $("ov-form").classList.remove("open");
+  await saveOp(d=>{
+    ev.id = "e"+String(d.nextId||1).padStart(3,"0");
+    d.nextId = (d.nextId||1)+1;
+    d.events.push(ev);
+  }, "Termin: "+label);
+}
+
+/* ================= Events verdrahten ================= */
+function segUpdate(){
+  const seg = $("seg-g");
+  seg.querySelectorAll("button").forEach(b=>b.classList.toggle("act", b.getAttribute("data-v")===state.g));
+  const act = seg.querySelector("button.act"), sl = $("seg-slider");
+  sl.style.left = act.offsetLeft+"px"; sl.style.width = act.offsetWidth+"px";
+  const col = state.g==="m" ? "#1f5fd0" : state.g==="w" ? "#c2317f" : "var(--navy)";
+  sl.style.background = col;
+}
+$("seg-g").addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(!b) return;
+  state.g = b.getAttribute("data-v");
+  segUpdate(); applyFilter();
+});
+function buildChips(){
+  $("chips").innerHTML =
+    Object.keys(CATS).map(k=>`<span class="chip act" data-k="${k}">${CATS[k]}</span>`).join("")
+    + `<span class="chip mini" data-k="__on">alle an</span><span class="chip mini" data-k="__off">alle aus</span>`;
+  $("f-comp").innerHTML = Object.keys(CATS).map(k=>`<option value="${k}">${CATS[k]}</option>`).join("");
+  $("f-comp").value = "blf";
+}
+$("chips").addEventListener("click", e=>{
+  const c = e.target.closest(".chip"); if(!c) return;
+  const k = c.getAttribute("data-k");
+  if(k==="__on"){ for(const x in CATS) state.cats[x]=true; }
+  else if(k==="__off"){ for(const x in CATS) state.cats[x]=false; }
+  else state.cats[k] = !state.cats[k];
+  document.querySelectorAll("#chips .chip[data-k]").forEach(el=>{
+    const kk = el.getAttribute("data-k");
+    if(CATS[kk]) el.classList.toggle("act", state.cats[kk]);
+  });
+  applyFilter();
+});
+$("viewtog").addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(!b) return;
+  state.view = b.getAttribute("data-v");
+  $("viewtog").querySelectorAll("button").forEach(x=>x.classList.toggle("act",x===b));
+  document.body.classList.toggle("mob", state.view==="list");
+  document.body.classList.toggle("forcegrid", state.view==="grid");
+});
+$("months").addEventListener("click", e=>{
+  const evEl = e.target.closest(".ev");
+  if(evEl){ openEvent(evEl.getAttribute("data-id")); e.stopPropagation(); return; }
+  const td = e.target.closest("td[data-date]");
+  if(td) openDay(td.getAttribute("data-date"));
+});
+$("agenda").addEventListener("click", e=>{
+  const row = e.target.closest(".arow[data-id]");
+  if(row) openEvent(row.getAttribute("data-id"));
+});
+$("day-list").addEventListener("click", async e=>{
+  const b = e.target.closest("[data-act]"); if(!b) return;
+  const act = b.getAttribute("data-act"), id = b.getAttribute("data-id");
+  if(!TOKEN){ openPin(); return; }
+  if(act==="note"){
+    const f = $("nf-"+id); f.style.display = f.style.display==="none"?"block":"none";
+    return;
+  }
+  if(act==="notesave"){
+    const txt = $("nt-"+id).value.trim(); if(!txt) return toast("Bitte Notiz eingeben.");
+    const by = $("nn-"+id).value.trim();
+    try{ localStorage.setItem("wpk-name", by); }catch(e){}
+    $("ov-day").classList.remove("open");
+    await saveOp(d=>{
+      const ev = d.events.find(x=>x.id===id); if(!ev) throw new Error("Termin nicht gefunden");
+      (ev.notes = ev.notes||[]).push({t:txt, by, at:new Date().toISOString()});
+    }, "Notiz zu "+id);
+    return;
+  }
+  if(act==="strike"){
+    $("ov-day").classList.remove("open");
+    await saveOp(d=>{
+      const ev = d.events.find(x=>x.id===id); if(!ev) throw new Error("Termin nicht gefunden");
+      ev.struck = !ev.struck;
+    }, "Streichung "+id);
+    return;
+  }
+  if(act==="del"){
+    const ev = findEv(id);
+    if(!confirm("Diesen Termin für ALLE löschen?\n\n"+(ev?ev.label:""))) return;
+    $("ov-day").classList.remove("open");
+    await saveOp(d=>{ d.events = d.events.filter(x=>x.id!==id); }, "Gelöscht "+id);
+    return;
+  }
+});
+$("btn-lock").addEventListener("click", ()=>{ if(!TOKEN) openPin(); else toast("Bearbeitung ist bereits freigeschaltet."); });
+$("pin-ok").addEventListener("click", submitPin);
+$("pin-input").addEventListener("keydown", e=>{ if(e.key==="Enter") submitPin(); });
+$("pin-cancel").addEventListener("click", ()=>$("ov-pin").classList.remove("open"));
+$("setup-cancel").addEventListener("click", ()=>$("ov-pin").classList.remove("open"));
+$("setup-ok").addEventListener("click", doSetup);
+$("fab").addEventListener("click", ()=>openForm(""));
+$("f-save").addEventListener("click", saveForm);
+document.querySelectorAll("#f-gender .opt").forEach(o=>o.addEventListener("click",()=>setGender(o.getAttribute("data-v"))));
+document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>$(b.getAttribute("data-close")).classList.remove("open")));
+document.querySelectorAll(".overlay").forEach(ov=>ov.addEventListener("click",e=>{ if(e.target===ov) ov.classList.remove("open"); }));
+
+/* Blasen im Hero */
+(function(){
+  const box = $("bubbles"); let h="";
+  for(let i=0;i<14;i++){
+    const s = 8+Math.round(Math.random()*26);
+    h += `<span style="left:${Math.round(Math.random()*100)}%;width:${s}px;height:${s}px;animation-duration:${9+Math.random()*14}s;animation-delay:${-Math.random()*18}s"></span>`;
+  }
+  box.innerHTML = h;
+})();
+
+buildChips(); segUpdate(); renderLegend(); restorePin(); loadData();
+window.addEventListener("resize", segUpdate);
+</script>
+</body>
+</html>
