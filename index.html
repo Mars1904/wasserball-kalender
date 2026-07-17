@@ -192,6 +192,28 @@ footer{max-width:1400px;margin:10px auto 26px;padding:0 16px;color:var(--muted);
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
 }
+/* ===== PDF / Druck (A4 quer) ===== */
+.printhead{display:none}
+@media print{
+  @page{size:A4 landscape;margin:8mm}
+  html,body{background:#fff!important}
+  .hero,.bar,.legend,.fab,.toast,footer,.overlay{display:none!important}
+  .printhead{display:block!important;font-size:15px;font-weight:800;color:#0b2447;margin:0 0 6px;
+    display:flex!important;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .printhead small{font-weight:600;color:#5d6b80;font-size:10.5px}
+  main{max-width:none!important;margin:0!important;padding:0!important}
+  .months{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:8px!important}
+  .agenda{display:none!important}
+  .month{box-shadow:none!important;break-inside:avoid;page-break-inside:avoid;padding:7px!important;border-radius:6px!important;animation:none!important}
+  .month h2{font-size:12px!important;margin:0 0 4px!important}
+  td{height:42px!important}
+  .ev{font-size:7.6px!important;padding:0.5px 3px!important;margin:1px 0!important}
+  .ev.gone{display:none!important}
+  .arow.gone{display:none!important}
+  .dn{font-size:8px!important}
+  th{font-size:8px!important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
 </style>
 </head>
 <body>
@@ -210,6 +232,7 @@ footer{max-width:1400px;margin:10px auto 26px;padding:0 16px;color:var(--muted);
   <div class="inner">
     <div class="title">Termine filtern
       <button class="lockbtn" id="btn-lock">🔒 Bearbeiten</button>
+      <button class="lockbtn" id="btn-pdf">🖨️ Als PDF</button>
       <span class="cnt" id="count">…</span>
     </div>
     <div class="rowflex" style="margin-bottom:8px">
@@ -232,6 +255,7 @@ footer{max-width:1400px;margin:10px auto 26px;padding:0 16px;color:var(--muted);
 <div class="legend" id="legend"></div>
 
 <main>
+  <div class="printhead" id="printhead"></div>
   <div class="months" id="months"></div>
   <div class="agenda" id="agenda"></div>
 </main>
@@ -262,6 +286,30 @@ footer{max-width:1400px;margin:10px auto 26px;padding:0 16px;color:var(--muted);
       <input type="password" id="setup-pin" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="····">
       <p id="setup-err" style="color:#b91c1c;font-size:13px;min-height:18px;margin:6px 0 0"></p>
       <div class="acts"><button class="btn" id="setup-cancel">Abbrechen</button><button class="btn primary" id="setup-ok">Einrichten</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- PDF-Export -->
+<div class="overlay" id="ov-pdf">
+  <div class="modal">
+    <h3>Kalender als PDF (Querformat)</h3>
+    <p style="font-size:13px;color:var(--muted);margin:0 0 6px">Wähle, welche Termine ins PDF sollen. Im Druck-Dialog dann „Als PDF speichern" wählen.</p>
+    <label>Termine von</label>
+    <div class="segf" id="pdf-gender">
+      <div class="opt selx" data-v="all">Alle</div>
+      <div class="opt" data-v="m">Männer</div>
+      <div class="opt" data-v="w">Frauen</div>
+    </div>
+    <label>Wettkämpfe</label>
+    <div id="pdf-comps" style="display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;font-size:13.5px"></div>
+    <div class="acts" style="justify-content:flex-start;margin-top:8px">
+      <button class="btn small" id="pdf-all-on">alle an</button>
+      <button class="btn small" id="pdf-all-off">alle aus</button>
+    </div>
+    <div class="acts">
+      <button class="btn" data-close="ov-pdf">Abbrechen</button>
+      <button class="btn primary" id="pdf-go">PDF erstellen</button>
     </div>
   </div>
 </div>
@@ -796,6 +844,45 @@ $("day-list").addEventListener("click", async e=>{
   }
 });
 $("btn-lock").addEventListener("click", ()=>{ if(!TOKEN) openPin(); else toast("Bearbeitung ist bereits freigeschaltet."); });
+/* ===== PDF-Export ===== */
+let pdfGender = "all";
+function setPdfGender(v){
+  pdfGender = v;
+  document.querySelectorAll("#pdf-gender .opt").forEach(o=>{
+    o.classList.remove("selm","selw","selx");
+    if(o.getAttribute("data-v")===v) o.classList.add(v==="m"?"selm":v==="w"?"selw":"selx");
+  });
+}
+document.querySelectorAll("#pdf-gender .opt").forEach(o=>o.addEventListener("click",()=>setPdfGender(o.getAttribute("data-v"))));
+function openPdf(){
+  const box = $("pdf-comps");
+  box.innerHTML = Object.keys(CATS).map(k=>
+    `<label style="display:flex;align-items:center;gap:7px;margin:0;font-weight:600;color:var(--ink);font-size:13px">
+      <input type="checkbox" value="${k}" ${state.cats[k]?"checked":""}> ${CATS[k]}</label>`).join("");
+  setPdfGender(state.g);
+  $("ov-pdf").classList.add("open");
+}
+$("btn-pdf").addEventListener("click", openPdf);
+$("pdf-all-on").addEventListener("click", ()=>document.querySelectorAll("#pdf-comps input").forEach(c=>c.checked=true));
+$("pdf-all-off").addEventListener("click", ()=>document.querySelectorAll("#pdf-comps input").forEach(c=>c.checked=false));
+$("pdf-go").addEventListener("click", ()=>{
+  const prev = {g:state.g, cats:Object.assign({},state.cats)};
+  state.g = pdfGender;
+  document.querySelectorAll("#pdf-comps input").forEach(cb=>{ state.cats[cb.value] = cb.checked; });
+  segUpdate(); applyFilter();
+  const gTxt = pdfGender==="all" ? "Alle Termine" : pdfGender==="m" ? "Nur Männer (+ DSV/beide)" : "Nur Frauen (+ DSV/beide)";
+  const on = Object.keys(CATS).filter(k=>state.cats[k]);
+  const cTxt = on.length===Object.keys(CATS).length ? "alle Wettkämpfe" : on.map(k=>CATS[k]).join(", ");
+  $("printhead").innerHTML = "🤽 Wasserball Jahresplaner 2026/27 <small>" + esc(gTxt) + " · " + esc(cTxt) + " · Stand: " + fmtD(new Date().toISOString().slice(0,10)) + "</small>";
+  $("ov-pdf").classList.remove("open");
+  const restore = ()=>{
+    state.g = prev.g; state.cats = prev.cats;
+    segUpdate(); applyFilter();
+    window.removeEventListener("afterprint", restore);
+  };
+  window.addEventListener("afterprint", restore);
+  setTimeout(()=>window.print(), 350);
+});
 $("pin-ok").addEventListener("click", submitPin);
 $("pin-input").addEventListener("keydown", e=>{ if(e.key==="Enter") submitPin(); });
 $("pin-cancel").addEventListener("click", ()=>$("ov-pin").classList.remove("open"));
