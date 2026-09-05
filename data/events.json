@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T14:52:25.476Z",
- "nextId": 156,
+ "updated": "2026-09-05T14:53:18.743Z",
+ "nextId": 157,
  "events": [
   {
    "id": "e001",
@@ -1802,6 +1802,18 @@
    "struck": false,
    "notes": [],
    "id": "e155"
+  },
+  {
+   "g": "m",
+   "cat": "bl1",
+   "start": "2026-10-17",
+   "end": "2026-10-17",
+   "label": "BL: ASCD-WS04",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e156"
   }
  ]
 }
