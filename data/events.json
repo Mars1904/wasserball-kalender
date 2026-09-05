@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:29:49.876Z",
+ "updated": "2026-09-05T15:29:55.505Z",
  "nextId": 173,
  "events": [
   {
@@ -550,18 +550,6 @@
    "start": "2027-02-24",
    "end": "2027-02-28",
    "label": "World Cup Final (Frauen + Männer)",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e087",
-   "g": "m",
-   "cat": "bl2",
-   "start": "2027-02-27",
-   "end": "2027-02-28",
-   "label": "2. BL – 13. Spieltag",
    "note": "",
    "status": "fest",
    "struck": false,
