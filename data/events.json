@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:06:21.410Z",
+ "updated": "2026-09-05T15:06:26.628Z",
  "nextId": 164,
  "events": [
   {
@@ -216,18 +216,6 @@
    "label": "EC Frauen Vorrunde – 1. Spieltag",
    "note": "Rot eingekreist",
    "status": "unsicher",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e037",
-   "g": "m",
-   "cat": "bl2",
-   "start": "2026-11-21",
-   "end": "2026-11-22",
-   "label": "2. BL – 3. Spieltag",
-   "note": "",
-   "status": "fest",
    "struck": false,
    "notes": []
   },
