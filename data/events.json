@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:10:07.740Z",
- "nextId": 165,
+ "updated": "2026-09-05T15:11:01.509Z",
+ "nextId": 166,
  "events": [
   {
    "id": "e001",
@@ -1610,6 +1610,18 @@
    "struck": false,
    "notes": [],
    "id": "e164"
+  },
+  {
+   "g": "m",
+   "cat": "bl1",
+   "start": "2026-11-28",
+   "end": "2026-11-28",
+   "label": "BL: WS04-Waspo Hannover (16:00 Uhr)",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e165"
   }
  ]
 }
