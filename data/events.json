@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T14:58:38.839Z",
- "nextId": 159,
+ "updated": "2026-09-05T14:59:59.609Z",
+ "nextId": 160,
  "events": [
   {
    "id": "e001",
@@ -1754,6 +1754,18 @@
    "struck": false,
    "notes": [],
    "id": "e158"
+  },
+  {
+   "g": "w",
+   "cat": "blf",
+   "start": "2026-10-24",
+   "end": "2026-10-24",
+   "label": "BL: WS04-Esslingen (14:00 Uhr)",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e159"
   }
  ]
 }
