@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:33:19.446Z",
+ "updated": "2026-09-05T15:34:48.696Z",
  "nextId": 176,
  "events": [
   {
@@ -635,18 +635,6 @@
    "end": "2027-03-21",
    "label": "Challenger Cup – Final 8",
    "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e099",
-   "g": "w",
-   "cat": "blf",
-   "start": "2027-03-20",
-   "end": "2027-03-21",
-   "label": "BL Frauen – 10. Spieltag (neu)",
-   "note": "falls nötig 7 Teams",
    "status": "fest",
    "struck": false,
    "notes": []
