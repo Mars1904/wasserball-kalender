@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:34:48.696Z",
+ "updated": "2026-09-05T15:34:53.105Z",
  "nextId": 176,
  "events": [
   {
@@ -622,18 +622,6 @@
    "start": "2027-03-17",
    "end": "2027-03-17",
    "label": "EC Frauen – Viertelfinale Rückspiel",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e098",
-   "g": "w",
-   "cat": "chc",
-   "start": "2027-03-18",
-   "end": "2027-03-21",
-   "label": "Challenger Cup – Final 8",
    "note": "",
    "status": "fest",
    "struck": false,
