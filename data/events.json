@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:48:06.293Z",
- "nextId": 179,
+ "updated": "2026-09-05T15:48:52.474Z",
+ "nextId": 180,
  "events": [
   {
    "id": "e001",
@@ -1394,6 +1394,18 @@
    "struck": false,
    "notes": [],
    "id": "e178"
+  },
+  {
+   "g": "w",
+   "cat": "blf",
+   "start": "2027-05-01",
+   "end": "2027-05-01",
+   "label": "BL HF Spiel 1",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e179"
   }
  ]
 }
