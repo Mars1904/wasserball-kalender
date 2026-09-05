@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:05:10.905Z",
+ "updated": "2026-09-05T15:06:16.161Z",
  "nextId": 164,
  "events": [
   {
@@ -216,18 +216,6 @@
    "label": "EC Frauen Vorrunde – 1. Spieltag",
    "note": "Rot eingekreist",
    "status": "unsicher",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e035",
-   "g": "w",
-   "cat": "blf",
-   "start": "2026-11-21",
-   "end": "2026-11-22",
-   "label": "BL Frauen – 4. Spieltag (Spandau spielfrei)",
-   "note": "",
-   "status": "fest",
    "struck": false,
    "notes": []
   },
