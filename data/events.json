@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:47:03.464Z",
+ "updated": "2026-09-05T15:48:06.293Z",
  "nextId": 179,
  "events": [
   {
@@ -862,18 +862,6 @@
    "start": "2027-04-28",
    "end": "2027-04-28",
    "label": "EC Frauen – Finale Hinspiel",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e129",
-   "g": "w",
-   "cat": "blf",
-   "start": "2027-05-01",
-   "end": "2027-05-02",
-   "label": "BL Frauen Playoffs – Halbfinale Spiel 1",
    "note": "",
    "status": "fest",
    "struck": false,
