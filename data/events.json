@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:38:26.821Z",
+ "updated": "2026-09-05T15:42:29.618Z",
  "nextId": 177,
  "events": [
   {
@@ -682,18 +682,6 @@
    "start": "2027-04-03",
    "end": "2027-04-04",
    "label": "1. BL Playoffs – Viertelfinale Spiel 1",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e108",
-   "g": "m",
-   "cat": "bl2",
-   "start": "2027-04-03",
-   "end": "2027-04-04",
-   "label": "2. BL Playoffs – Viertelfinale Spiel 1",
    "note": "",
    "status": "fest",
    "struck": false,
