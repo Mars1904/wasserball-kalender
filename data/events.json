@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:54:23.778Z",
+ "updated": "2026-09-05T15:55:28.973Z",
  "nextId": 184,
  "events": [
   {
@@ -1178,18 +1178,6 @@
    "struck": false,
    "notes": [],
    "id": "e159"
-  },
-  {
-   "g": "m",
-   "cat": "bl1",
-   "start": "2026-10-31",
-   "end": "2026-10-31",
-   "label": "BL: WS04-Neukölln",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": [],
-   "id": "e160"
   },
   {
    "g": "m",
