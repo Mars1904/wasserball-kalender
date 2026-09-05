@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T14:53:18.743Z",
+ "updated": "2026-09-05T14:53:35.707Z",
  "nextId": 157,
  "events": [
   {
@@ -94,18 +94,6 @@
    "start": "2026-10-24",
    "end": "2026-10-25",
    "label": "1. BL – 3. Spieltag",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e014",
-   "g": "m",
-   "cat": "pok",
-   "start": "2026-10-24",
-   "end": "2026-10-25",
-   "label": "DSV-Pokal Männer – 2. Runde",
    "note": "",
    "status": "fest",
    "struck": false,
