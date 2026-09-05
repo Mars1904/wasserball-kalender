@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T14:54:05.773Z",
+ "updated": "2026-09-05T14:54:23.254Z",
  "nextId": 157,
  "events": [
   {
@@ -156,18 +156,6 @@
    "label": "2. BL – 1. Spieltag",
    "note": "",
    "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e021",
-   "g": "w",
-   "cat": "ec",
-   "start": "2026-10-31",
-   "end": "2026-11-01",
-   "label": "EC-Qualifikation Frauen",
-   "note": "",
-   "status": "unsicher",
    "struck": false,
    "notes": []
   },
