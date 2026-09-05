@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:50:03.072Z",
- "nextId": 182,
+ "updated": "2026-09-05T15:53:32.045Z",
+ "nextId": 183,
  "events": [
   {
    "id": "e001",
@@ -1406,6 +1406,18 @@
    "struck": false,
    "notes": [],
    "id": "e181"
+  },
+  {
+   "g": "x",
+   "cat": "pok",
+   "start": "2027-03-05",
+   "end": "2027-03-06",
+   "label": "Pokal Endrunde",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e182"
   }
  ]
 }
