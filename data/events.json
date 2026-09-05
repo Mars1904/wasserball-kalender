@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:32:06.917Z",
+ "updated": "2026-09-05T15:32:19.679Z",
  "nextId": 175,
  "events": [
   {
@@ -1550,18 +1550,6 @@
    "struck": false,
    "notes": [],
    "id": "e172"
-  },
-  {
-   "g": "w",
-   "cat": "blf",
-   "start": "2027-02-13",
-   "end": "2027-02-13",
-   "label": "WS04-Uerdinger SV (16:00 Uhr)",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": [],
-   "id": "e173"
   },
   {
    "g": "w",
