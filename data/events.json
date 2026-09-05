@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T14:48:06.424Z",
- "nextId": 154,
+ "updated": "2026-09-05T14:49:36.263Z",
+ "nextId": 155,
  "events": [
   {
    "id": "e001",
@@ -1802,6 +1802,18 @@
    "struck": false,
    "notes": [],
    "id": "e153"
+  },
+  {
+   "g": "m",
+   "cat": "bl1",
+   "start": "2026-10-10",
+   "end": "2026-10-10",
+   "label": "BL: Cannstatt-WS04",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e154"
   }
  ]
 }
