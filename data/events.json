@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:49:37.301Z",
+ "updated": "2026-09-05T15:49:47.431Z",
  "nextId": 181,
  "events": [
   {
@@ -982,18 +982,6 @@
    "start": "2027-05-13",
    "end": "2027-05-15",
    "label": "CL Männer – Final Four",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e142",
-   "g": "w",
-   "cat": "blf",
-   "start": "2027-05-15",
-   "end": "2027-05-16",
-   "label": "BL Frauen – Finale Spiel 1",
    "note": "",
    "status": "fest",
    "struck": false,
