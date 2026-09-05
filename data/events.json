@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:08:30.642Z",
+ "updated": "2026-09-05T15:08:38.961Z",
  "nextId": 164,
  "events": [
   {
@@ -323,18 +323,6 @@
    "end": "2026-12-13",
    "label": "World Cup Division 2 (mit GER)",
    "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e049",
-   "g": "m",
-   "cat": "bl1",
-   "start": "2026-12-12",
-   "end": "2026-12-13",
-   "label": "1. BL – 9. Spieltag",
-   "note": "Notiz: ASC Duisburg – Spandau",
    "status": "fest",
    "struck": false,
    "notes": []
