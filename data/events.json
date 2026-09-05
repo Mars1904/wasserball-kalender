@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:08:26.466Z",
+ "updated": "2026-09-05T15:08:30.642Z",
  "nextId": 164,
  "events": [
   {
@@ -310,18 +310,6 @@
    "start": "2026-12-03",
    "end": "2026-12-03",
    "label": "EC Männer Vorrunde – 5. Spieltag",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e047",
-   "g": "m",
-   "cat": "bl2",
-   "start": "2026-12-05",
-   "end": "2026-12-06",
-   "label": "2. BL – 5. Spieltag",
    "note": "",
    "status": "fest",
    "struck": false,
