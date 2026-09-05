@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:13:21.307Z",
- "nextId": 167,
+ "updated": "2026-09-05T15:15:41.174Z",
+ "nextId": 168,
  "events": [
   {
    "id": "e001",
@@ -1634,6 +1634,18 @@
    "struck": false,
    "notes": [],
    "id": "e166"
+  },
+  {
+   "g": "m",
+   "cat": "bl1",
+   "start": "2026-12-12",
+   "end": "2026-12-12",
+   "label": "BL: WS04-ASC Duisburg (16:00 Uhr)",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e167"
   }
  ]
 }
