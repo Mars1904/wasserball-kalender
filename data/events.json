@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:18:54.818Z",
+ "updated": "2026-09-05T15:18:59.957Z",
  "nextId": 170,
  "events": [
   {
@@ -406,18 +406,6 @@
    "start": "2027-01-16",
    "end": "2027-01-22",
    "label": "World Cup Division 2 (mit GER)",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e065",
-   "g": "m",
-   "cat": "bl2",
-   "start": "2027-01-23",
-   "end": "2027-01-24",
-   "label": "2. BL – 8. Spieltag",
    "note": "",
    "status": "fest",
    "struck": false,
