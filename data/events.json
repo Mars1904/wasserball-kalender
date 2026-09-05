@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:49:47.431Z",
- "nextId": 181,
+ "updated": "2026-09-05T15:50:03.072Z",
+ "nextId": 182,
  "events": [
   {
    "id": "e001",
@@ -1394,6 +1394,18 @@
    "struck": false,
    "notes": [],
    "id": "e180"
+  },
+  {
+   "g": "w",
+   "cat": "blf",
+   "start": "2027-05-15",
+   "end": "2027-05-15",
+   "label": "BL Frauen – Finale Spiel 1",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e181"
   }
  ]
 }
