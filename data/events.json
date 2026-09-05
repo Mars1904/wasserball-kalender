@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T14:49:50.693Z",
+ "updated": "2026-09-05T14:49:56.029Z",
  "nextId": 155,
  "events": [
   {
@@ -83,18 +83,6 @@
    "end": "2026-10-11",
    "label": "CL qualifikation Frauen",
    "note": "",
-   "status": "unsicher",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e011",
-   "g": "w",
-   "cat": "blf",
-   "start": "2026-10-17",
-   "end": "2026-10-18",
-   "label": "BL Frauen – 2",
-   "note": "Handschriftliche Umnummerierung, mit ?",
    "status": "unsicher",
    "struck": false,
    "notes": []
