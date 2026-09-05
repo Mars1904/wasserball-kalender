@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:29:31.686Z",
+ "updated": "2026-09-05T15:29:37.651Z",
  "nextId": 173,
  "events": [
   {
@@ -538,18 +538,6 @@
    "start": "2027-02-15",
    "end": "2027-02-21",
    "label": "EM-Qualifikation 1 (Frauen + Männer)",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e083",
-   "g": "m",
-   "cat": "bl2",
-   "start": "2027-02-20",
-   "end": "2027-02-21",
-   "label": "2. BL – 12. Spieltag",
    "note": "",
    "status": "fest",
    "struck": false,
