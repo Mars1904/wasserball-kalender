@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:18:29.655Z",
+ "updated": "2026-09-05T15:18:54.818Z",
  "nextId": 170,
  "events": [
   {
@@ -407,18 +407,6 @@
    "end": "2027-01-22",
    "label": "World Cup Division 2 (mit GER)",
    "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e064",
-   "g": "w",
-   "cat": "blf",
-   "start": "2027-01-23",
-   "end": "2027-01-24",
-   "label": "BL Frauen – 6. Spieltag ✓",
-   "note": "Handschriftlich abgehakt",
    "status": "fest",
    "struck": false,
    "notes": []
