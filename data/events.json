@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:03:27.138Z",
+ "updated": "2026-09-05T15:04:07.907Z",
  "nextId": 163,
  "events": [
   {
@@ -179,18 +179,6 @@
    "end": "2026-11-15",
    "label": "Challenger Cup – Qualifikation (Chemnitz)",
    "note": "Im Plan kombiniert mit CL Frauen VR 2",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e030",
-   "g": "w",
-   "cat": "blf",
-   "start": "2026-11-14",
-   "end": "2026-11-15",
-   "label": "BL Frauen – 3. Spieltag",
-   "note": "Handschriftlich: „BL 3!“",
    "status": "fest",
    "struck": false,
    "notes": []
