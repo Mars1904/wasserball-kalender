@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:42:35.582Z",
+ "updated": "2026-09-05T15:42:52.030Z",
  "nextId": 177,
  "events": [
   {
@@ -816,18 +816,6 @@
    "label": "1. BL Playoffs – Halbfinale Spiel 1",
    "note": "",
    "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e121",
-   "g": "m",
-   "cat": "bl1",
-   "start": "2027-04-17",
-   "end": "2027-04-18",
-   "label": "DM Relegation",
-   "note": "Im Plan selbst mit „??“ versehen",
-   "status": "unsicher",
    "struck": false,
    "notes": []
   },
