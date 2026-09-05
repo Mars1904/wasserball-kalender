@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:08:51.368Z",
+ "updated": "2026-09-05T15:08:55.890Z",
  "nextId": 164,
  "events": [
   {
@@ -372,18 +372,6 @@
    "label": "EC Männer Vorrunde – 6. Spieltag",
    "note": "Handschriftlich „6?“",
    "status": "unsicher",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e056",
-   "g": "m",
-   "cat": "bl2",
-   "start": "2026-12-19",
-   "end": "2026-12-20",
-   "label": "2. BL – 7. Spieltag",
-   "note": "",
-   "status": "fest",
    "struck": false,
    "notes": []
   },
