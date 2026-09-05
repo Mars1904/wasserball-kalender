@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:09:02.486Z",
- "nextId": 164,
+ "updated": "2026-09-05T15:09:47.751Z",
+ "nextId": 165,
  "events": [
   {
    "id": "e001",
@@ -1622,6 +1622,18 @@
    "struck": false,
    "notes": [],
    "id": "e163"
+  },
+  {
+   "g": "m",
+   "cat": "bl1",
+   "start": "2026-11-21",
+   "end": "2026-11-21",
+   "label": "BL: Potsdam-WS04",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e164"
   }
  ]
 }
