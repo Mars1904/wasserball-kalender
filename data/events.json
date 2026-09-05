@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:08:55.890Z",
+ "updated": "2026-09-05T15:09:02.486Z",
  "nextId": 164,
  "events": [
   {
@@ -322,18 +322,6 @@
    "start": "2026-12-06",
    "end": "2026-12-13",
    "label": "World Cup Division 2 (mit GER)",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e051",
-   "g": "m",
-   "cat": "cc",
-   "start": "2026-12-12",
-   "end": "2026-12-13",
-   "label": "CC Männer – Qualifikation 2 (Potsdam & Cannstatt)",
    "note": "",
    "status": "fest",
    "struck": false,
