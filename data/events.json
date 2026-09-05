@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:03:00.619Z",
+ "updated": "2026-09-05T15:03:08.872Z",
  "nextId": 162,
  "events": [
   {
@@ -1742,18 +1742,6 @@
    "struck": false,
    "notes": [],
    "id": "e160"
-  },
-  {
-   "g": "m",
-   "cat": "bl1",
-   "start": "2026-11-07",
-   "end": "2026-11-07",
-   "label": "BL: WS04-WS Hannover",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": [],
-   "id": "e161"
   }
  ]
 }
