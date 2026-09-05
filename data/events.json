@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:28:01.432Z",
- "nextId": 172,
+ "updated": "2026-09-05T15:28:28.665Z",
+ "nextId": 173,
  "events": [
   {
    "id": "e001",
@@ -1610,6 +1610,18 @@
    "struck": false,
    "notes": [],
    "id": "e171"
+  },
+  {
+   "g": "m",
+   "cat": "bl1",
+   "start": "2027-02-06",
+   "end": "2027-02-06",
+   "label": "BL: WS Hannover-WS04",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e172"
   }
  ]
 }
