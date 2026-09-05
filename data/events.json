@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T14:54:46.884Z",
- "nextId": 157,
+ "updated": "2026-09-05T14:55:46.167Z",
+ "nextId": 158,
  "events": [
   {
    "id": "e001",
@@ -1742,6 +1742,18 @@
    "struck": false,
    "notes": [],
    "id": "e156"
+  },
+  {
+   "g": "m",
+   "cat": "bl1",
+   "start": "2026-10-24",
+   "end": "2026-10-24",
+   "label": "BL: WS04-SV Krefeld 16:00 Uhr",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e157"
   }
  ]
 }
