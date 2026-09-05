@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:16:39.176Z",
+ "updated": "2026-09-05T15:16:54.502Z",
  "nextId": 169,
  "events": [
   {
@@ -360,18 +360,6 @@
    "label": "CL Frauen – Vorrunde 4. Spieltag",
    "note": "",
    "status": "unsicher",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e059",
-   "g": "w",
-   "cat": "blf",
-   "start": "2027-01-09",
-   "end": "2027-01-10",
-   "label": "BL Frauen – 5. Spieltag (neu): Bochum – Spandau",
-   "note": "Bochum–Spandau !",
-   "status": "fest",
    "struck": false,
    "notes": []
   },
