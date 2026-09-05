@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T14:45:16.154Z",
- "nextId": 153,
+ "updated": "2026-09-05T14:47:33.337Z",
+ "nextId": 154,
  "events": [
   {
    "id": "e001",
@@ -1814,6 +1814,18 @@
    "status": "fest",
    "struck": false,
    "notes": []
+  },
+  {
+   "g": "w",
+   "cat": "blf",
+   "start": "2026-10-03",
+   "end": "2026-10-03",
+   "label": "BL: WS04-ETV (16:00)",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e153"
   }
  ]
 }
