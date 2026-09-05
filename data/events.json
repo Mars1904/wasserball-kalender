@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:28:28.665Z",
+ "updated": "2026-09-05T15:29:27.443Z",
  "nextId": 173,
  "events": [
   {
@@ -538,18 +538,6 @@
    "start": "2027-02-15",
    "end": "2027-02-21",
    "label": "EM QUALIFIKATION",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e081",
-   "g": "m",
-   "cat": "bl2",
-   "start": "2027-02-13",
-   "end": "2027-02-14",
-   "label": "2. BL – 11. Spieltag",
    "note": "",
    "status": "fest",
    "struck": false,
