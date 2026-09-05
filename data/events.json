@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:34:53.105Z",
+ "updated": "2026-09-05T15:35:47.112Z",
  "nextId": 176,
  "events": [
   {
@@ -575,18 +575,6 @@
    "end": "2027-03-11",
    "label": "EC Männer – Viertelfinale Hinspiel",
    "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e093",
-   "g": "w",
-   "cat": "pok",
-   "start": "2027-03-12",
-   "end": "2027-03-13",
-   "label": "Pokal Frauen – Endrunde",
-   "note": "FALLS SPANDAU CL SPIELT GLEICHES WE!",
    "status": "fest",
    "struck": false,
    "notes": []
