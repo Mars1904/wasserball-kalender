@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T14:47:33.337Z",
+ "updated": "2026-09-05T14:47:58.254Z",
  "nextId": 154,
  "events": [
   {
@@ -90,18 +90,6 @@
   {
    "id": "e009",
    "g": "m",
-   "cat": "bl1",
-   "start": "2026-10-10",
-   "end": "2026-10-11",
-   "label": "1. BL – 1. Spieltag",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e010",
-   "g": "w",
    "cat": "bl1",
    "start": "2026-10-10",
    "end": "2026-10-11",
