@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:33:07.625Z",
+ "updated": "2026-09-05T15:33:19.446Z",
  "nextId": 176,
  "events": [
   {
@@ -550,18 +550,6 @@
    "start": "2027-02-24",
    "end": "2027-02-28",
    "label": "World Cup Final (Frauen + Männer)",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e088",
-   "g": "w",
-   "cat": "blf",
-   "start": "2027-03-06",
-   "end": "2027-03-07",
-   "label": "BL Frauen – 9. Spieltag ✓",
    "note": "",
    "status": "fest",
    "struck": false,
