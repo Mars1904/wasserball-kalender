@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:19:04.673Z",
+ "updated": "2026-09-05T15:19:09.157Z",
  "nextId": 170,
  "events": [
   {
@@ -430,18 +430,6 @@
    "start": "2027-01-29",
    "end": "2027-01-31",
    "label": "CC Frauen – Qualifikation 2",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e069",
-   "g": "m",
-   "cat": "bl2",
-   "start": "2027-01-30",
-   "end": "2027-01-31",
-   "label": "2. BL – 9. Spieltag",
    "note": "",
    "status": "fest",
    "struck": false,
