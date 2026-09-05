@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:10:02.635Z",
+ "updated": "2026-09-05T15:10:07.740Z",
  "nextId": 165,
  "events": [
   {
@@ -252,18 +252,6 @@
    "label": "EC Frauen Vorrunde – 2. Spieltag",
    "note": "Orange markiert",
    "status": "unsicher",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e042",
-   "g": "m",
-   "cat": "bl2",
-   "start": "2026-11-28",
-   "end": "2026-11-29",
-   "label": "2. BL – 4. Spieltag",
-   "note": "",
-   "status": "fest",
    "struck": false,
    "notes": []
   },
