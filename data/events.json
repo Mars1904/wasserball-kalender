@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:04:07.907Z",
+ "updated": "2026-09-05T15:04:16.477Z",
  "nextId": 163,
  "events": [
   {
@@ -167,18 +167,6 @@
    "end": "2026-11-15",
    "label": "CL Frauen – Vorrunde 2. Spieltag",
    "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e029",
-   "g": "w",
-   "cat": "chc",
-   "start": "2026-11-14",
-   "end": "2026-11-15",
-   "label": "Challenger Cup – Qualifikation (Chemnitz)",
-   "note": "Im Plan kombiniert mit CL Frauen VR 2",
    "status": "fest",
    "struck": false,
    "notes": []
