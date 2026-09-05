@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:44:33.901Z",
+ "updated": "2026-09-05T15:45:48.500Z",
  "nextId": 178,
  "events": [
   {
@@ -791,18 +791,6 @@
    "end": "2027-04-17",
    "label": "EC Frauen – Halbfinale Rückspiel",
    "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e119",
-   "g": "w",
-   "cat": "blf",
-   "start": "2027-04-17",
-   "end": "2027-04-18",
-   "label": "BL Frauen – 12. Spieltag: Spandau – Bochum",
-   "note": "Spandau–Bochum ansonsten schon Playoffs",
    "status": "fest",
    "struck": false,
    "notes": []
