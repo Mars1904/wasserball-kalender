@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:36:35.653Z",
+ "updated": "2026-09-05T15:38:26.821Z",
  "nextId": 177,
  "events": [
   {
@@ -671,18 +671,6 @@
    "end": "2027-04-03",
    "label": "CL Frauen – Viertelfinale Hinspiel",
    "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e106",
-   "g": "w",
-   "cat": "blf",
-   "start": "2027-04-03",
-   "end": "2027-04-04",
-   "label": "BL Frauen – 11. Spieltag ✓ (Spandau – Bochum?)",
-   "note": "nur falls 7 Teams sonst schon Playoffs",
    "status": "fest",
    "struck": false,
    "notes": []
