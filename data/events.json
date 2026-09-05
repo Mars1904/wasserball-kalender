@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:27:56.604Z",
+ "updated": "2026-09-05T15:28:01.432Z",
  "nextId": 172,
  "events": [
   {
@@ -490,18 +490,6 @@
    "start": "2027-02-06",
    "end": "2027-02-07",
    "label": "EC Frauen Vorrunde – 6. Spieltag",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e076",
-   "g": "m",
-   "cat": "bl2",
-   "start": "2027-02-06",
-   "end": "2027-02-07",
-   "label": "2. BL – 10. Spieltag",
    "note": "",
    "status": "fest",
    "struck": false,
