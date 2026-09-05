@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:02:07.590Z",
+ "updated": "2026-09-05T15:02:19.457Z",
  "nextId": 161,
  "events": [
   {
@@ -130,18 +130,6 @@
    "start": "2026-11-05",
    "end": "2026-11-06",
    "label": "EC Männer Vorrunde – 2. Spieltag",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e023",
-   "g": "w",
-   "cat": "cc",
-   "start": "2026-11-06",
-   "end": "2026-11-08",
-   "label": "CC Frauen – Qualifikation 1",
    "note": "",
    "status": "fest",
    "struck": false,
