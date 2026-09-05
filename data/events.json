@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T14:49:56.029Z",
- "nextId": 155,
+ "updated": "2026-09-05T14:52:25.476Z",
+ "nextId": 156,
  "events": [
   {
    "id": "e001",
@@ -1790,6 +1790,18 @@
    "struck": false,
    "notes": [],
    "id": "e154"
+  },
+  {
+   "g": "w",
+   "cat": "blf",
+   "start": "2026-10-17",
+   "end": "2026-10-17",
+   "label": "BL: Uerdinger SV-WS04",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e155"
   }
  ]
 }
