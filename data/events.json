@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:19:58.169Z",
- "nextId": 171,
+ "updated": "2026-09-05T15:22:59.296Z",
+ "nextId": 172,
  "events": [
   {
    "id": "e001",
@@ -1622,6 +1622,18 @@
    "struck": false,
    "notes": [],
    "id": "e170"
+  },
+  {
+   "g": "m",
+   "cat": "bl1",
+   "start": "2027-01-30",
+   "end": "2027-01-30",
+   "label": "BL: WS04-Neukölln (16:00 Uhr)",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e171"
   }
  ]
 }
