@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:11:01.509Z",
- "nextId": 166,
+ "updated": "2026-09-05T15:13:21.307Z",
+ "nextId": 167,
  "events": [
   {
    "id": "e001",
@@ -1622,6 +1622,18 @@
    "struck": false,
    "notes": [],
    "id": "e165"
+  },
+  {
+   "g": "m",
+   "cat": "bl1",
+   "start": "2026-12-05",
+   "end": "2026-12-05",
+   "label": "BL: WS04-Cannstatt (16:00 Uhr)",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e166"
   }
  ]
 }
