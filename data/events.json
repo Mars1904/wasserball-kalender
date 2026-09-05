@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-05T15:15:41.174Z",
- "nextId": 168,
+ "updated": "2026-09-05T15:16:39.176Z",
+ "nextId": 169,
  "events": [
   {
    "id": "e001",
@@ -1646,6 +1646,18 @@
    "struck": false,
    "notes": [],
    "id": "e167"
+  },
+  {
+   "g": "m",
+   "cat": "bl1",
+   "start": "2026-12-19",
+   "end": "2026-12-19",
+   "label": "BL: SV Krefeld-WS04",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e168"
   }
  ]
 }
