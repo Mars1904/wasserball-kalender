@@ -18,6 +18,11 @@
   --chc-bg:#e0f2fe; --chc-tx:#075985;
   --cc-bg:#ffedd5; --cc-tx:#9a3412;
   --edit:#b45309; --ok:#15803d;
+  /* Trainingsphasen (Frauen) */
+  --ph-kb:#2f6b3a; --ph-kb-bg:#e3f3e6;   /* Kraftblock / Aufbau */
+  --ph-tap:#8a6a12; --ph-tap-bg:#faf0cf; /* Taper */
+  --ph-pk:#b8431f; --ph-pk-bg:#fbe3d9;   /* Peak */
+  --ph-er:#0b6e8c; --ph-er-bg:#e1f1f6;   /* In-Season Erhalt */
   --r:14px; --shadow:0 2px 14px rgba(11,36,71,.07);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -98,6 +103,15 @@ body.single .ev.cat-ec{background:var(--ec-bg);color:var(--ec-tx)}
 body.single .ev.cat-chc{background:var(--chc-bg);color:var(--chc-tx)}
 body.single .ev.cat-cc{background:var(--cc-bg);color:var(--cc-tx)}
 .ev.u{border-style:dashed}
+/* ===== Trainingsphasen: Tageszellen einfärben, Chip nur am Phasenstart und montags ===== */
+td.ph-kb{background:var(--ph-kb-bg)} td.ph-tap{background:var(--ph-tap-bg)} td.ph-pk{background:var(--ph-pk-bg)} td.ph-er{background:var(--ph-er-bg)}
+td.ph-kb.we{background:#d6ead9} td.ph-tap.we{background:#f2e6bd} td.ph-pk.we{background:#f5d6c8} td.ph-er.we{background:#d2e7ee}
+.ev.cat-kb{background:var(--ph-kb);color:#fff;border-color:var(--ph-kb)}
+.ev.cat-tap{background:var(--ph-tap);color:#fff;border-color:var(--ph-tap)}
+.ev.cat-pk{background:var(--ph-pk);color:#fff;border-color:var(--ph-pk)}
+.ev.cat-er{background:var(--ph-er);color:#fff;border-color:var(--ph-er)}
+.ev.ph-hidden{display:none}
+body.nophase td[class*="ph-"]{background:#fff} body.nophase td[class*="ph-"].we{background:#f0f4f9}
 .ev.struck{text-decoration:line-through;opacity:.5}
 .ev .nti{font-size:8.5px}
 /* ===== Agenda (mobil) ===== */
@@ -369,8 +383,10 @@ const GH = {
 const CATS = {
   bl1:"1. Bundesliga", bl2:"2. Bundesliga", blf:"Bundesliga Frauen", pok:"DSV-Pokal / Supercup",
   cl:"Champions League", ec:"Euro Cup", cc:"Conference Cup", chc:"Challenger Cup",
-  nat:"Nationalteams", sonst:"Verband / Sonstiges"
+  nat:"Nationalteams", sonst:"Verband / Sonstiges",
+  kb:"Kraftblock / Aufbau", tap:"Taper", pk:"Peak", er:"In-Season Erhalt"
 };
+const PHASE = {kb:1, tap:1, pk:1, er:1};   /* Trainingsphasen-Kategorien (Frauen): färben die Tageszellen */
 const ZTXT = {m:"Männer", w:"Frauen", x:"DSV-Maßnahme"};
 const MONTHS = [[2026,8],[2026,9],[2026,10],[2026,11],[2027,0],[2027,1],[2027,2],[2027,3],[2027,4],[2027,5],[2027,6],[2027,7]];
 const MN = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
@@ -535,6 +551,8 @@ function visible(ev){
   return gOK && state.cats[ev.cat];
 }
 function shorten(l){
+  const ph = String(l).match(/^(Kraftblock \d|Taper|PEAK \d(?:\+\d)?|In-Season \d|Aufbau \d|Power-Block|Kraft-Miniblock|Belastungswoche)/);
+  if(ph) return ph[1];
   return String(l)
     .replace("Champions League","CL").replace("EC-Qualifikation","EC Quali").replace("CL-Qualifikation","CL Quali")
     .replace(" Männer","").replace(" Frauen","")
@@ -557,6 +575,7 @@ function evClass(ev){
 function tagStyle(ev){
   const single = state.g!=="all";
   if(ev.cat==="nat"||ev.cat==="sonst") return "background:var(--n-bg);color:var(--n-tx);border-color:var(--n-ln)";
+  if(PHASE[ev.cat]) return `background:var(--ph-${ev.cat});color:#fff;border-color:var(--ph-${ev.cat})`;
   if(single){
     if(ev.cat==="cl") return "background:var(--cl-bg);color:var(--cl-tx);border-color:var(--int)";
     if(ev.cat==="ec") return "background:var(--ec-bg);color:var(--ec-tx);border-color:var(--int)";
@@ -595,12 +614,17 @@ function renderGrid(){
     for(let d=1;d<=days;d++){
       const dt = new Date(y,m,d), k = keyD(dt), dow=(dt.getDay()+6)%7;
       let inner = `<div class="dn">${d}</div>`;
+      let phCls = "";
       for(const it of (DAYMAP[k]||[])){
         const ev = it.ev;
+        if(PHASE[ev.cat]){
+          phCls = " ph-"+ev.cat;
+          if(!it.first && dow!==0) continue;   /* Chip nur am Phasenstart und montags */
+        }
         inner += `<span class="${evClass(ev)}${it.first?"":" cont"}" data-id="${ev.id}" data-g="${ev.g}" data-cat="${ev.cat}" title="${esc(ev.label)}">`
               + esc(shorten(ev.label)) + (ev.notes && ev.notes.length? ' <span class="nti">💬'+ev.notes.length+'</span>':"") + `</span>`;
       }
-      html += `<td class="${dow>=5?"we":""}" data-date="${k}">${inner}</td>`;
+      html += `<td class="${dow>=5?"we":""}${phCls}" data-date="${k}" data-ph="${phCls.trim()}">${inner}</td>`;
       cell++;
       if(cell%7===0 && d<days) html+="</tr><tr>";
     }
@@ -641,6 +665,12 @@ function renderAgenda(){
 }
 function applyFilter(){
   document.body.classList.toggle("single", state.g!=="all");
+  document.querySelectorAll("#months td[data-ph]").forEach(td=>{
+    const ph = td.getAttribute("data-ph"); if(!ph) return;
+    const cat = ph.replace("ph-","");
+    const on = state.cats[cat] && state.g!=="m";
+    td.classList.toggle(ph, on);
+  });
   let n = 0;
   document.querySelectorAll("#months .ev").forEach(el=>{
     const ev = findEv(el.getAttribute("data-id"));
@@ -672,6 +702,10 @@ function renderLegend(){
           <span class="lg" style="background:var(--cc-bg);color:var(--cc-tx)">Conference Cup</span>
           <span class="lg" style="background:var(--n-bg);color:var(--n-tx)">Nationalteam / DSV</span>`;
   }
+  if(state.g!=="m") h += `<span class="lg" style="background:var(--ph-kb-bg);color:var(--ph-kb)">Kraftblock / Aufbau</span>
+          <span class="lg" style="background:var(--ph-tap-bg);color:var(--ph-tap)">Taper</span>
+          <span class="lg" style="background:var(--ph-pk-bg);color:var(--ph-pk)">Peak</span>
+          <span class="lg" style="background:var(--ph-er-bg);color:var(--ph-er)">In-Season Erhalt</span>`;
   h += `<span style="font-size:11.5px">· gestrichelt = unsicher (?) · Tag/Termin antippen für Details &amp; Notizen</span>`;
   $("legend").innerHTML = h;
 }

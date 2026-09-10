@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-09-05T15:56:10.204Z",
- "nextId": 185,
+ "nextId": 197,
  "events": [
   {
    "id": "e001",
@@ -1418,6 +1418,150 @@
    "struck": false,
    "notes": [],
    "id": "e184"
+  },
+  {
+   "id": "e185",
+   "g": "w",
+   "cat": "kb",
+   "start": "2026-09-10",
+   "end": "2026-09-27",
+   "label": "Kraftblock 1 – Maximalkraft 3×/Wo, Wasser hohes Volumen",
+   "note": "Kraft: 4–5 Sätze à 3–5 Wdh bei 80–87 % 1RM (Kniebeuge, Zug, Druck, Rotation), letzte schwere Einheit Do 24.09. Wasser: höchstes Wochenvolumen, polarisiert (viel Z1/Z2, 2 harte Einheiten). Abbruchkriterium: Sprint −3 % UND HRV unter Basis UND Wellness schlecht → sofort 30–40 % entlasten.",
+   "status": "fest",
+   "struck": false,
+   "notes": []
+  },
+  {
+   "id": "e186",
+   "g": "w",
+   "cat": "tap",
+   "start": "2026-09-28",
+   "end": "2026-10-08",
+   "label": "Taper CL-Quali – Volumen −50 %, Intensität halten",
+   "note": "Kraft nur noch 1–2× Power (Sprünge, Medizinball, Kniebeuge 3×3 explosiv), ab 05.10. kein Muskelkater mehr. Wasser: kurze Spielsituationen, Sprints mit voller Pause, Taktik. BL-Auftakt 03.10. ist Generalprobe, nicht Peak.",
+   "status": "fest",
+   "struck": false,
+   "notes": []
+  },
+  {
+   "id": "e187",
+   "g": "w",
+   "cat": "pk",
+   "start": "2026-10-09",
+   "end": "2026-10-11",
+   "label": "PEAK 1 – CL-Qualifikation",
+   "note": "3 Spiele in 3 Tagen: morgens Wellness (Hooper) + PRS abfragen, sRPE nach jedem Spiel, Erholung zwischen Spielen priorisieren. Kein Krafttraining.",
+   "status": "fest",
+   "struck": false,
+   "notes": []
+  },
+  {
+   "id": "e188",
+   "g": "w",
+   "cat": "er",
+   "start": "2026-10-12",
+   "end": "2026-12-05",
+   "label": "In-Season 1 – Kraft-Erhalt 2×/Wo, Wasser 2:1-Wellen",
+   "note": "Kraft: Di/Do morgens 35–45 min vor dem Wasser, 2–3 Arbeitssätze, Wechsel schwer/explosiv; bei 2 Spielen pro Woche nur 1 Einheit. Wasser: 2 normale Wochen, dann 1 Belastungswoche (+20–30 % TRIMP) in Wochen ohne Europapokal. Mi-Doppelslot = Hauptbelastung.",
+   "status": "fest",
+   "struck": false,
+   "notes": []
+  },
+  {
+   "id": "e189",
+   "g": "w",
+   "cat": "kb",
+   "start": "2026-10-19",
+   "end": "2026-10-25",
+   "label": "Belastungswoche Wasser (+20–30 % TRIMP)",
+   "note": "Geplante Überlast, keine Europapokal-Woche. Danach zwei normale Wochen.",
+   "status": "fest",
+   "struck": false,
+   "notes": []
+  },
+  {
+   "id": "e190",
+   "g": "w",
+   "cat": "kb",
+   "start": "2026-11-02",
+   "end": "2026-11-08",
+   "label": "Belastungswoche Wasser (+20–30 % TRIMP)",
+   "note": "Geplante Überlast, keine Spiele diese Woche. Danach zwei normale Wochen.",
+   "status": "fest",
+   "struck": false,
+   "notes": []
+  },
+  {
+   "id": "e191",
+   "g": "w",
+   "cat": "kb",
+   "start": "2026-12-06",
+   "end": "2026-12-21",
+   "label": "Kraftblock 2 (Daheimgebliebene) – World-Cup-Fenster",
+   "note": "Für Spielerinnen ohne Nationalteam: 2 Wochen Maximalkraft + Hypertrophie-Akzent 3×/Wo, dazu aerobe Umfangswoche im Wasser. Nationalspielerinnen: nach Rückkehr 1 Entlastungswoche (−40 %), dann direkt Erhaltungsmodus, kein Nachholen.",
+   "status": "fest",
+   "struck": false,
+   "notes": []
+  },
+  {
+   "id": "e192",
+   "g": "w",
+   "cat": "kb",
+   "start": "2026-12-22",
+   "end": "2027-01-08",
+   "label": "Aufbau 2 – Kraft → Power, Wasser polarisiert 2 Wochen",
+   "note": "Woche 1 noch schwer, Woche 2 Übergang zu Power (Wurfkraft, Kontrastsätze). 3 Tage um Weihnachten komplett frei. Wasser: 80 % ruhig / 20 % sehr hart; ab 04.01. spielnah für 09.01.",
+   "status": "fest",
+   "struck": false,
+   "notes": []
+  },
+  {
+   "id": "e193",
+   "g": "w",
+   "cat": "er",
+   "start": "2027-01-09",
+   "end": "2027-02-28",
+   "label": "In-Season 2 – dichteste Spielphase, Last konstant halten",
+   "note": "Kraft-Erhalt 2×/Wo wie im Herbst. Keine Belastungswochen, HR-TRIMP-Wochenlast konstant, Wurfzahlen deckeln.",
+   "status": "fest",
+   "struck": false,
+   "notes": []
+  },
+  {
+   "id": "e194",
+   "g": "w",
+   "cat": "kb",
+   "start": "2027-02-15",
+   "end": "2027-02-21",
+   "label": "Kraft-Miniblock (Daheimgebliebene) – EM-Quali-Fenster",
+   "note": "1 Woche, 3 Krafteinheiten für Spielerinnen ohne Nationalteam, danach Umstellung auf Power.",
+   "status": "fest",
+   "struck": false,
+   "notes": []
+  },
+  {
+   "id": "e195",
+   "g": "w",
+   "cat": "kb",
+   "start": "2027-03-01",
+   "end": "2027-04-02",
+   "label": "Power-Block – Umsetzung zur K.o.-Phase",
+   "note": "Kraft 2×/Wo explosiv: Kontrasttraining, Sprünge, Wurfkraft (Medizinball, Kabelzug-Rotation); Maximalkraft nur 1 Erinnerungssatz/Woche. Wasser: Intensität hoch, Volumen mittel, 4v4/6v6 im Wettkampftempo, wiederholte Sprints mit Wassertreten unter Ermüdung. Ostern 26.–29.03. = Reload. Falls Euro Cup (VF 09./17.03.): Block eine Woche vorziehen, Taper 02.–08.03.",
+   "status": "fest",
+   "struck": false,
+   "notes": []
+  },
+  {
+   "id": "e196",
+   "g": "w",
+   "cat": "pk",
+   "start": "2027-04-03",
+   "end": "2027-05-23",
+   "label": "PEAK 2+3 – K.o.-Phase & BL-Playoffs/Finale",
+   "note": "7 Wochen ohne echte Entlastung. Kraft 1×/Wo explosiv 20–30 min, 48 h vor Spiel; vor Final Four und BL-Finale letzte Einheit 4 Tage vorher. Wasser: Mini-Taper (3–4 Tage, −40 % Volumen) vor jedem K.o.-Paar, dazwischen 1 spielnahe Einheit hoher Intensität. Umfang nie mehr aufbauen. HRV/Wellness entscheiden, wer Mo/Mi frei bekommt.",
+   "status": "fest",
+   "struck": false,
+   "notes": []
   }
  ]
 }
