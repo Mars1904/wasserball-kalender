@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-12T07:52:43.940Z",
+ "updated": "2026-09-12T07:52:54.331Z",
  "nextId": 199,
  "events": [
   {
@@ -1262,18 +1262,6 @@
    "struck": false,
    "notes": [],
    "id": "e169"
-  },
-  {
-   "g": "w",
-   "cat": "blf",
-   "start": "2027-01-23",
-   "end": "2027-01-23",
-   "label": "BL: ETV-WS04",
-   "note": "",
-   "status": "fest",
-   "struck": true,
-   "notes": [],
-   "id": "e170"
   },
   {
    "g": "m",
