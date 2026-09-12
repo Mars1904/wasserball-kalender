@@ -1,7 +1,7 @@
 {
  "version": 1,
- "updated": "2026-09-12T07:51:59.550Z",
- "nextId": 198,
+ "updated": "2026-09-12T07:52:43.940Z",
+ "nextId": 199,
  "events": [
   {
    "id": "e001",
@@ -1562,6 +1562,18 @@
    "struck": false,
    "notes": [],
    "id": "e197"
+  },
+  {
+   "g": "w",
+   "cat": "blf",
+   "start": "2027-01-23",
+   "end": "2027-01-23",
+   "label": "BL: ETV-WS04 (14:30 Uhr)",
+   "note": "",
+   "status": "fest",
+   "struck": false,
+   "notes": [],
+   "id": "e198"
   }
  ]
 }
