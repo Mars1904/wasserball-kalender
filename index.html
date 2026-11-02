@@ -17,6 +17,7 @@
   --ec-bg:#bfdbfe; --ec-tx:#1e3a8a;
   --chc-bg:#e0f2fe; --chc-tx:#075985;
   --cc-bg:#ffedd5; --cc-tx:#9a3412;
+  --rs-bg:#f1f5f9; --rs-tx:#334155; --rs-ln:#94a3b8;   /* Reisetage */
   --edit:#b45309; --ok:#15803d;
   /* Trainingsphasen (Frauen) */
   --ph-kb:#2f6b3a; --ph-kb-bg:#e3f3e6;   /* Kraftblock / Aufbau */
@@ -97,6 +98,7 @@ td:not(.empty):hover{background:#eaf3fc}
 .ev.m{background:var(--m-bg);color:var(--m-tx);border-color:var(--m-ln)}
 .ev.w{background:var(--w-bg);color:var(--w-tx);border-color:var(--w-ln)}
 .ev.cat-nat,.ev.cat-sonst{background:var(--n-bg);color:var(--n-tx);border-color:var(--n-ln)}
+.ev.cat-reise{background:repeating-linear-gradient(135deg,var(--rs-bg) 0 6px,#e2e8f0 6px 12px);color:var(--rs-tx);border-color:var(--rs-ln)}
 .ev.cat-cl,.ev.cat-ec,.ev.cat-cc,.ev.cat-chc{border:1.5px solid var(--int)}
 body.single .ev.cat-cl{background:var(--cl-bg);color:var(--cl-tx)}
 body.single .ev.cat-ec{background:var(--ec-bg);color:var(--ec-tx)}
@@ -382,8 +384,8 @@ const GH = {
 
 const CATS = {
   bl1:"1. Bundesliga", bl2:"2. Bundesliga", blf:"Bundesliga Frauen", pok:"DSV-Pokal / Supercup",
-  cl:"Champions League", ec:"Euro Cup", cc:"Conference Cup", chc:"Challenger Cup",
-  nat:"Nationalteams", sonst:"Verband / Sonstiges",
+  ec:"Euro Cup", cc:"Conference Cup", chc:"Challenger Cup",
+  nat:"Nationalteams", sonst:"Verband / Sonstiges", reise:"Reisetag",
   kb:"Kraftblock / Aufbau", tap:"Taper", pk:"Peak", er:"In-Season Erhalt"
 };
 const PHASE = {kb:1, tap:1, pk:1, er:1};   /* Trainingsphasen-Kategorien (Frauen): färben die Tageszellen */
@@ -575,6 +577,7 @@ function evClass(ev){
 function tagStyle(ev){
   const single = state.g!=="all";
   if(ev.cat==="nat"||ev.cat==="sonst") return "background:var(--n-bg);color:var(--n-tx);border-color:var(--n-ln)";
+  if(ev.cat==="reise") return "background:var(--rs-bg);color:var(--rs-tx);border-color:var(--rs-ln)";
   if(PHASE[ev.cat]) return `background:var(--ph-${ev.cat});color:#fff;border-color:var(--ph-${ev.cat})`;
   if(single){
     if(ev.cat==="cl") return "background:var(--cl-bg);color:var(--cl-tx);border-color:var(--int)";
@@ -694,13 +697,14 @@ function renderLegend(){
     h += `<span class="lg" style="background:var(--m-bg);color:var(--m-tx)">Männer</span>
           <span class="lg" style="background:var(--w-bg);color:var(--w-tx)">Frauen</span>
           <span class="lg" style="background:var(--n-bg);color:var(--n-tx)">Nationalteam / DSV</span>
-          <span class="lg" style="border-color:var(--int)">international = rot umrandet</span>`;
+          <span class="lg" style="border-color:var(--int)">international = rot umrandet</span>
+          <span class="lg" style="background:var(--rs-bg);color:var(--rs-tx)">Reisetag</span>`;
   } else {
-    h += `<span class="lg" style="background:var(--cl-bg);color:var(--cl-tx)">Champions League</span>
-          <span class="lg" style="background:var(--ec-bg);color:var(--ec-tx)">Euro Cup</span>
+    h += `<span class="lg" style="background:var(--ec-bg);color:var(--ec-tx)">Euro Cup</span>
           <span class="lg" style="background:var(--chc-bg);color:var(--chc-tx)">Challenger Cup</span>
           <span class="lg" style="background:var(--cc-bg);color:var(--cc-tx)">Conference Cup</span>
-          <span class="lg" style="background:var(--n-bg);color:var(--n-tx)">Nationalteam / DSV</span>`;
+          <span class="lg" style="background:var(--n-bg);color:var(--n-tx)">Nationalteam / DSV</span>
+          <span class="lg" style="background:var(--rs-bg);color:var(--rs-tx)">Reisetag</span>`;
   }
   if(state.g!=="m") h += `<span class="lg" style="background:var(--ph-kb-bg);color:var(--ph-kb)">Kraftblock / Aufbau</span>
           <span class="lg" style="background:var(--ph-tap-bg);color:var(--ph-tap)">Taper</span>
