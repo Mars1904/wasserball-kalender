@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-02T08:10:59.000Z",
+ "updated": "2026-11-08T18:46:06.945Z",
  "nextId": 205,
  "events": [
   {
@@ -108,18 +108,6 @@
    "label": "EC: VK Šabac-Spandau 04 · Auswärts",
    "note": "Euro Cup Gruppe B, 4. Spieltag · Reisetage davor/danach",
    "status": "fest",
-   "struck": false,
-   "notes": []
-  },
-  {
-   "id": "e034",
-   "g": "w",
-   "cat": "ec",
-   "start": "2026-11-21",
-   "end": "2026-11-22",
-   "label": "EC Frauen Vorrunde – 1. Spieltag",
-   "note": "Rot eingekreist",
-   "status": "unsicher",
    "struck": false,
    "notes": []
   },
