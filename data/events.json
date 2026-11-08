@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-08T18:46:06.945Z",
+ "updated": "2026-11-08T18:47:08.201Z",
  "nextId": 205,
  "events": [
   {
@@ -878,18 +878,6 @@
    "struck": false,
    "notes": [],
    "id": "e162"
-  },
-  {
-   "g": "w",
-   "cat": "blf",
-   "start": "2026-11-14",
-   "end": "2026-11-14",
-   "label": "BL: WS04-Chemnitz (16:00 Uhr)",
-   "note": "",
-   "status": "fest",
-   "struck": false,
-   "notes": [],
-   "id": "e163"
   },
   {
    "g": "m",
