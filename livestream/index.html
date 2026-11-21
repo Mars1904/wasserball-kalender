@@ -1,0 +1,377 @@
+<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wasserball · Livestream-Kalender</title>
+<style>
+:root{--ink:#173047;--muted:#516476;--line:#d6e0e7;--paper:#fff;--blue:#0657a5;--wash:#f3f6f8}*{box-sizing:border-box}body{margin:0;background:var(--wash);color:var(--ink);font:15px/1.5 system-ui,sans-serif}header{background:var(--ink);color:white;padding:24px max(20px,calc((100vw - 1440px)/2));position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px}h1{font-size:24px;margin:0}header p{margin:4px 0 0;color:#d2e0eb}.today-label{font-weight:650;white-space:nowrap}main{max-width:1480px;margin:auto;padding:24px 20px}button,select,.download{font:inherit;border:1px solid var(--line);border-radius:6px;background:white;color:var(--ink);padding:10px 14px;cursor:pointer}button:hover,.download:hover{background:#e5eef5}:focus-visible{outline:3px solid #d18a00;outline-offset:3px}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}.nav,.filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap}h2{font-size:24px;margin:0 16px 0 0;min-width:210px}.download{text-decoration:none}.legend{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:16px;color:var(--muted);font-size:13px}.legend span:before{content:'';display:inline-block;width:10px;height:10px;background:var(--mark);margin-right:6px;border-radius:50%}.calendar{background:white;border:1px solid var(--line);border-radius:8px;overflow:hidden}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:12px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;background:#e9eff3}.day{min-height:148px;padding:8px;border-top:1px solid var(--line);border-right:1px solid var(--line)}.day:nth-child(7n){border-right:0}.outside{background:#f5f7f9;color:#74818c}.today{background:#eef6ff;box-shadow:inset 0 0 0 2px var(--blue)}.dayhead{display:flex;align-items:center;gap:6px;margin-bottom:8px;font-weight:650;font-size:13px}.today .number{background:var(--blue);color:white;border-radius:50%;width:28px;height:28px;display:inline-grid;place-items:center}.today-word{font-size:11px;color:var(--blue)}.event{display:block;width:100%;text-align:left;padding:8px;margin:6px 0;background:#f0f4f8;border:0;border-left:3px solid var(--mark);border-radius:3px;font-size:12px;line-height:1.45;overflow-wrap:anywhere}.event strong,.event span{display:block}.event small{color:var(--muted)}.count{color:var(--muted);margin:16px 0}.notes{font-size:13px;color:var(--muted);max-width:1000px}.agenda{display:none}.agenda article{background:white;border:1px solid var(--line);padding:12px;margin-bottom:12px;border-radius:6px}.agenda h3{margin:0;font-size:15px}dialog{border:1px solid var(--line);border-radius:10px;max-width:540px;width:calc(100% - 32px);padding:24px;color:var(--ink)}dialog::backdrop{background:#10263888}dialog h2{font-size:21px;min-width:0;margin:16px 0}dialog a{color:var(--blue)}.close{float:right}
+@media(max-width:900px){.day{min-height:120px;padding:5px}.event{font-size:11px;padding:5px}.week div{padding:8px}.today-word{display:none}}
+@media(max-width:600px){header{padding:16px;align-items:flex-start;flex-direction:column;gap:8px}h1{font-size:21px}main{padding:16px 12px}.filters{width:100%}select{max-width:100%}h2{font-size:21px;min-width:0;width:100%;margin-bottom:8px}.nav{width:100%}.day{min-height:64px;padding:4px}.dayhead{justify-content:center}.day .event{font-size:0;padding:0;height:6px;border-left:0;background:var(--mark);margin:4px 0}.day .event *{display:none}.week div{text-align:center;padding:8px 0;font-size:11px}.agenda{display:block;margin-top:24px}.legend{gap:12px}.download{font-size:13px}}
+
+.day{cursor:pointer;position:relative}.day:hover{background:#edf3f8}.euro-day{outline:2px solid #c74b54;outline-offset:-3px;background:#fff5f5}.today.euro-day{box-shadow:inset 0 0 0 2px #0657a5;outline-offset:-6px}.euro-badge{display:block;color:#a52f3d;font-size:9px;font-weight:750;letter-spacing:.04em;margin-top:8px}.event:hover{filter:brightness(.96)}dialog{max-width:680px;max-height:90vh;overflow:auto}.game-detail{border-left:4px solid var(--mark);padding:12px 16px;margin:20px 0;background:#f4f7fa}.game-detail h3{margin:0;font-size:18px}.game-detail p{margin:6px 0;font-size:14px}dl{display:grid;grid-template-columns:130px 1fr;gap:8px;font-size:14px}dt{font-weight:650}dd{margin:0}.field{display:flex;flex-direction:column;gap:4px;margin:12px 0;font-size:14px;font-weight:600}input{font:inherit;padding:10px;border:1px solid #a7b9c7;border-radius:5px;width:100%}.danger{color:#a32935;margin:12px 8px 12px 0;border-color:#d79199}#feedback{position:sticky;bottom:12px;background:#fff5d8;padding:8px 12px;border-radius:6px;z-index:5}#feedback:empty{display:none}button:disabled{opacity:.55;cursor:not-allowed}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}#mode{font-size:13px;color:var(--muted)}
+</style>
+<header><div><h1>Livestreamplanung</h1><p>Heimspiele · Saison 2026/27 · <a href="../" style="color:inherit">Zum Jahresplaner ↗</a></p></div><div class="today-label" id="todayLabel" aria-live="polite"></div></header>
+<main><div class="toolbar"><div class="nav"><h2 id="month" aria-live="polite"></h2><button id="prev" aria-label="Vorheriger Monat">←</button><button id="now">Heute</button><button id="next" aria-label="Nächster Monat">→</button></div><div class="filters"><label for="team">Mannschaft</label><select id="team"><option value="all">Alle Mannschaften</option><option value="sp-men">Spandau 04 Herren</option><option value="sp-women">Spandau 04 Damen</option><option value="nk-men">SG Neukölln Herren</option><option value="nk-u18">SG Neukölln U18</option></select><button id="ics">ICS herunterladen</button><button id="csv">CSV herunterladen</button></div></div>
+<div class="actions"><button id="unlock">Mit PIN bearbeiten</button><button id="export">Sicherung exportieren</button></div><p id="mode"></p><div class="legend"><span style="--mark:#075ca8">Spandau Herren</span><span style="--mark:#933c78">Spandau Damen</span><span style="--mark:#007464">Neukölln Herren</span><span style="--mark:#966000">Neukölln U18</span></div>
+<div class="calendar" aria-label="Monatskalender"><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div class="grid" id="grid"></div></div><p class="count" id="count" role="status"></p><section class="agenda" id="agenda" aria-label="Spiele des Monats"></section>
+<p class="notes">Tag anklicken für alle Spiele und die Besetzung von Hauptkamera, PTZ-Kamera und Regie. Rot umrandete Tage enthalten Euro-Cup-Spiele. Auf dem Handy stehen die vollständigen Begegnungen zusätzlich unter dem Monatsraster. Alle Zeiten: Europe/Berlin.</p><p class="notes">Spielplanstand: 21.11.2026. Ausgangsdaten: 28 Heimspiele einschließlich vergangener Termine. Euro Cup Damen: Termine vorläufig, Anwurfzeiten offen. Weitere Play-off- und K.-o.-Spiele sind noch nicht erfasst. Kalender zur Livestreamplanung, keine Übertragungszusage. Das heutige Datum aktualisiert sich automatisch. Änderungen werden gespeichert; offizielle Spielplanänderungen müssen manuell übernommen werden. ICS und CSV enthalten den aktuell geladenen Kalenderstand einschließlich Besetzungen. Ein erneuter Download ist nach Änderungen nötig; dies ist kein automatisch aktualisiertes Kalenderabo.</p><p id="feedback" role="status" aria-live="polite"></p><noscript>Bitte JavaScript aktivieren, um den Monatskalender anzuzeigen.</noscript></main>
+<dialog id="details"><button class="close" id="close">Schließen</button><div id="detailContent"></div></dialog>
+<dialog id="pinDialog"><form id="pinForm"><h2>Bearbeitung freischalten</h2><label class="field">PIN<input id="pinInput" type="password" inputmode="numeric" autocomplete="off" required></label><p id="pinError" role="alert"></p><button type="submit">Entsperren</button><button type="button" id="pinCancel">Abbrechen</button></form></dialog><script>
+const games=[
+  {
+    "date": "2026-10-03",
+    "time": "16:00",
+    "competition": "Bundesliga Damen",
+    "home": "Wfr. Spandau 04",
+    "away": "ETV Hamburg",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "879a803f37fc530a307ab78b8bd640a1f0a732f4"
+  },
+  {
+    "date": "2026-10-10",
+    "time": "15:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "SV Cannstatt",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "d2f8c07824b4ac29b147d58c9a5257939445bc51"
+  },
+  {
+    "date": "2026-10-17",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "SV Cannstatt",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "cbc9f8efb366f1607aa79cbb7e1e199850b9b31d"
+  },
+  {
+    "date": "2026-10-24",
+    "time": "14:00",
+    "competition": "Bundesliga Damen",
+    "home": "Wfr. Spandau 04",
+    "away": "SSV Esslingen",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "5b153008b4b092fab60eb0950f668c4758a75043"
+  },
+  {
+    "date": "2026-10-24",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "SV Krefeld 1972",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "a04077c7183699b92b6cd7fc76b876fb1946cca6"
+  },
+  {
+    "date": "2026-10-29",
+    "time": "19:00",
+    "competition": "Euro Cup Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "VK Šabac Elixir",
+    "location": "Sport- und Lehrschwimmhalle Schöneberg, Sachsendamm 11, 10829 Berlin",
+    "status": "Vereinsankündigung",
+    "source": "https://spandau04.de/wasserball/spandau04-vk-sabac-euro-cup-29-oktober-2026/",
+    "uid": "5536a6ffd3618e5455fc3d1c90507db7c3f282e15d755171199c7b2db0d56ae4"
+  },
+  {
+    "date": "2026-10-31",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "Wfr. Spandau 04",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "657ea49b90d114642f30cc2bd43a6587313336e5"
+  },
+  {
+    "date": "2026-11-07",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "White Sharks Hannover",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "fdb3b1851e2ee19cfe821c13ba9da6c3ce8affee"
+  },
+  {
+    "date": "2026-11-12",
+    "time": "19:00",
+    "competition": "Euro Cup Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "Rari Nantes Savona",
+    "location": "Sport- und Lehrschwimmhalle Schöneberg, Sachsendamm 11, 10829 Berlin",
+    "status": "Vereinsankündigung",
+    "source": "https://spandau04.de/wasserball/spandau04-savona-euro-cup-12-november-2026/",
+    "uid": "7cd73a49ac0e0089d561455aa0f80d3af2b31bd234b53668cc8d67d3d47cf2cb"
+  },
+  {
+    "date": "2026-11-21",
+    "time": "14:00",
+    "competition": "U18-Bundesliga",
+    "home": "SG Neukölln Berlin",
+    "away": "ASC Duisburg",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "388c8e7d11a89ad48e94f1b0af33f1b6975cad94"
+  },
+  {
+    "date": "2026-11-21",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "ASC Duisburg",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "c5bbbe556a03cfe33f7ffa51fabd7bf956adfb03"
+  },
+  {
+    "date": "2026-11-21",
+    "time": "18:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "OSC Potsdam",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "fe84e56ac45025d2af5e735053cdee86ac32079c"
+  },
+  {
+    "date": "2026-11-28",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "Waspo 98 Hannover",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "16:00 Uhr laut Liga; Vereinsmeldung bezeichnet die Zeit als vorläufig",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "1710feea3bc4111b01876ed2e63952fc1e1e2040"
+  },
+  {
+    "date": "2026-12-03",
+    "time": "19:00",
+    "competition": "Euro Cup Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "Primorac Kotor",
+    "location": "Sport- und Lehrschwimmhalle Schöneberg, Sachsendamm 11, 10829 Berlin",
+    "status": "Vereinsankündigung",
+    "source": "https://spandau04.de/wasserball/spandau04-sabac-euro-cup-19-november-2026/",
+    "uid": "bb2a22bb9b078e7029c7e00ab06a482963661ce66a2151e3950346a242cece2c"
+  },
+  {
+    "date": "2026-12-05",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "Waspo 98 Hannover",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "33fc4214fdb3c7affc9d3601d0aa410abc4605d0"
+  },
+  {
+    "date": "2026-12-12",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "ASC Duisburg",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "e56555ad7714ed0151210a6702442987b77bf41f"
+  },
+  {
+    "date": "2027-01-09",
+    "time": "16:00",
+    "competition": "U18-Bundesliga",
+    "home": "SG Neukölln Berlin",
+    "away": "SV Krefeld 1972",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "ff8b1a2ac42c059f8a8d6ca608e18f5d178082c7"
+  },
+  {
+    "date": "2027-01-27",
+    "time": "",
+    "competition": "Euro Cup Damen",
+    "home": "Wfr. Spandau 04",
+    "away": "KINEF Surgutneftegaz Kirishi",
+    "location": "Heimspiel Berlin; Halle noch zu bestätigen",
+    "status": "Vorläufig: Datum laut Flashscore; Anwurfzeit offen, Verbandsbestätigung ausstehend",
+    "source": "https://www.flashscore.com/water-polo/europe/euro-cup-women/fixtures/",
+    "uid": "9274a78566bfa7d4753cbc6bcd95245196362a579aa2c8a87fdbe5de09dfebb7"
+  },
+  {
+    "date": "2027-01-30",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "SG Neukölln Berlin",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "9a5c4bd3c0a2a5cf7ee152de0c341511d1197ef9"
+  },
+  {
+    "date": "2027-02-06",
+    "time": "",
+    "competition": "Euro Cup Damen",
+    "home": "Wfr. Spandau 04",
+    "away": "Dunaújváros",
+    "location": "Heimspiel Berlin; Halle noch zu bestätigen",
+    "status": "Vorläufig: Datum laut Flashscore; Anwurfzeit offen, Verbandsbestätigung ausstehend",
+    "source": "https://www.flashscore.com/water-polo/europe/euro-cup-women/fixtures/",
+    "uid": "74186b57b1126bd688faa97fe9e3c762aa4fc7166d1eab11f376f35b11cb883f"
+  },
+  {
+    "date": "2027-02-06",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "SV Krefeld 1972",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "d5e2740ccee67c6e7aadfadf6c483cd740b4ec97"
+  },
+  {
+    "date": "2027-02-13",
+    "time": "16:00",
+    "competition": "Bundesliga Damen",
+    "home": "Wfr. Spandau 04",
+    "away": "Uerdinger SV 08",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "0ac3af5031d06a72dbb79adbd3e9da173690a7c2"
+  },
+  {
+    "date": "2027-02-20",
+    "time": "16:00",
+    "competition": "U18-Bundesliga",
+    "home": "SG Neukölln Berlin",
+    "away": "OSC Potsdam",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "2941c80feb438d0404ff2a7cd773fbe7c8bbfd5d"
+  },
+  {
+    "date": "2027-02-20",
+    "time": "18:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "OSC Potsdam",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "333be5a1d0c6c9e17ec2536102cb477327a1aaeb"
+  },
+  {
+    "date": "2027-03-13",
+    "time": "16:00",
+    "competition": "U18-Bundesliga",
+    "home": "SG Neukölln Berlin",
+    "away": "White Sharks Hannover",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "d9f261a9eabb49d08777b0df0346cbcd8686b87c"
+  },
+  {
+    "date": "2027-03-13",
+    "time": "18:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "White Sharks Hannover",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "af2856c79ebfcdf1241278ddcd02da3729322ea1"
+  },
+  {
+    "date": "2027-03-14",
+    "time": "12:00",
+    "competition": "U18-Bundesliga",
+    "home": "SG Neukölln Berlin",
+    "away": "SV Cannstatt",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "50654167a5a6dcf8987dab91c837264e1dd83ef5"
+  },
+  {
+    "date": "2027-04-18",
+    "time": "13:00",
+    "competition": "Bundesliga Damen",
+    "home": "Wfr. Spandau 04",
+    "away": "SV Blau-Weiß Bochum",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "e815402201ed8552f1598577f797ec718656d758"
+  }
+];
+const colors={'sp-men':'#075ca8','sp-women':'#933c78','nk-men':'#007464','nk-u18':'#966000'};
+function teamKey(g){return g.home.includes('Spandau')?(g.competition.includes('Damen')?'sp-women':'sp-men'):(g.competition.includes('U18')?'nk-u18':'nk-men')}
+function berlinToday(){const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Berlin',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());return ['year','month','day'].map(k=>p.find(x=>x.type===k).value).join('-')}
+function dateKey(d){return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
+function parseDate(s){const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d,12)}
+let today=berlinToday(),view=parseDate(today);view.setDate(1);
+const $=id=>document.getElementById(id);let filter='all';
+function eventButton(g){const b=document.createElement('button');b.className='event';b.style.setProperty('--mark',colors[teamKey(g)]);const title=`${g.time||'Uhrzeit offen'} · ${g.competition}: ${g.home} – ${g.away}`;b.setAttribute('aria-label',title);b.title=title;for(const [tag,t] of [['strong',g.time||'Uhrzeit offen'],['small',g.competition],['span',g.home+' – '+g.away]]){const el=document.createElement(tag);el.textContent=t;b.append(el)}b.dataset.uid=g.uid;b.onclick=e=>{e.stopPropagation();showDetails(g)};return b}
+function showDetails(g){const box=$('detailContent');box.replaceChildren();const h=document.createElement('h2');h.textContent=g.home+' – '+g.away;box.append(h);for(const text of [g.competition,parseDate(g.date).toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+' · '+(g.time?g.time+' Uhr':'Anwurfzeit offen'),g.location,g.status]){const p=document.createElement('p');p.textContent=text;box.append(p)}const a=document.createElement('a');a.href=g.source;a.target='_blank';a.rel='noopener';a.textContent='Spielplanquelle öffnen ↗';box.append(a);$('details').showModal()}
+function render(){const y=view.getFullYear(),m=view.getMonth();$('month').textContent=view.toLocaleDateString('de-DE',{month:'long',year:'numeric'});$('todayLabel').textContent='Heute · '+parseDate(today).toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric'});const selected=games.filter(g=>filter==='all'||teamKey(g)===filter),monthGames=selected.filter(g=>g.date.startsWith(`${y}-${String(m+1).padStart(2,'0')}`));const grid=$('grid');grid.replaceChildren();const start=new Date(y,m,1,12);start.setDate(1-(start.getDay()+6)%7);const weeks=Math.ceil(((new Date(y,m,1).getDay()+6)%7+new Date(y,m+1,0).getDate())/7);for(let i=0;i<weeks*7;i++){const d=new Date(start);d.setDate(start.getDate()+i);const key=dateKey(d),cell=document.createElement('div');cell.className='day'+(d.getMonth()!==m?' outside':'')+(key===today?' today':'');if(key===today)cell.setAttribute('aria-current','date');cell.dataset.date=key;cell.tabIndex=0;cell.setAttribute('aria-label',d.toLocaleDateString('de-DE'));const head=document.createElement('div');head.className='dayhead';const number=document.createElement('span');number.className='number';number.textContent=d.getDate();head.append(number);if(key===today){const t=document.createElement('span');t.className='today-word';t.textContent='HEUTE';head.append(t)}cell.append(head);selected.filter(g=>g.date===key).forEach(g=>cell.append(eventButton(g)));grid.append(cell)}$('count').textContent=monthGames.length?`${monthGames.length} Heimspiel${monthGames.length===1?'':'e'} im ${$('month').textContent}`:'Keine erfassten Heimspiele in diesem Monat.';const agenda=$('agenda');agenda.replaceChildren();monthGames.forEach(g=>{const a=document.createElement('article'),h=document.createElement('h3');h.textContent=parseDate(g.date).toLocaleDateString('de-DE',{weekday:'short',day:'numeric',month:'long'});a.append(h,eventButton(g));agenda.append(a)})}
+$('prev').onclick=()=>{view.setMonth(view.getMonth()-1);render()};$('next').onclick=()=>{view.setMonth(view.getMonth()+1);render()};$('now').onclick=()=>{today=berlinToday();view=parseDate(today);view.setDate(1);render()};$('team').onchange=e=>{filter=e.target.value;render()};$('close').onclick=()=>$('details').close();function refreshDay(){const next=berlinToday();if(next!==today){const follow=view.getFullYear()===parseDate(today).getFullYear()&&view.getMonth()===parseDate(today).getMonth();today=next;if(follow){view=parseDate(today);view.setDate(1)}render()}}setInterval(refreshDay,30000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshDay()});render();
+
+const hosted=true;let sessionPin=false,serverAuth=false,revision=0,activeDay=null,saving=false;
+const roles={main:'Hauptkamera',ptz:'PTZ-Kamera',director:'Regie'};
+const backgrounds={'sp-men':'#e4f0fc','sp-women':'#f6e6f0','nk-men':'#def3ed','nk-u18':'#fff0d4'};
+function message(text){$('feedback').textContent=text}
+function savedLocal(){try{localStorage.setItem('wb-calendar-v2',JSON.stringify(games));return true}catch{message('Speichern nicht möglich. Bitte Browser-Speicher erlauben oder eine Sicherung exportieren.');return false}}
+let githubToken=null;
+const ghFile='livestream/games.json';
+const ghEndpoint='https://api.github.com/repos/Mars1904/wasserball-kalender/contents/';
+async function githubCall(path,opts={}){const headers={Accept:'application/vnd.github+json',...opts.headers};if(githubToken)headers.Authorization='Bearer '+githubToken;const r=await fetch(ghEndpoint+path+'?ref=main',{...opts,headers,cache:'no-store'});if(!r.ok){if(r.status===409)throw Error('Der Kalender wurde zwischenzeitlich geändert. Bitte erneut bearbeiten.');if(r.status===401||r.status===403)throw Error('GitHub-Zugriff fehlgeschlagen. Bitte neu entsperren oder die bestehende Kalender-Einrichtung prüfen.');throw Error('GitHub-Anfrage fehlgeschlagen ('+r.status+').')}return r.json()}
+function decode64(s){return new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g,'')),c=>c.charCodeAt(0)))}
+function encode64(s){const b=new TextEncoder().encode(s);let binary='';for(const c of b)binary+=String.fromCharCode(c);return btoa(binary)}
+async function api(path,method='GET',data){
+ if(path==='config')return {};
+ if(path==='login'){const r=await fetch('../data/config.json',{cache:'no-store'});if(!r.ok)throw Error('Team-Einrichtung nicht erreichbar.');const {enc}=await r.json();try{const b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(data.pin),'PBKDF2',false,['deriveKey']);const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(enc.salt),iterations:150000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);const candidate=new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(enc.iv)},key,b64(enc.ct)));githubToken=candidate;await githubCall(ghFile);return {ok:true}}catch(e){githubToken=null;throw Error('Code falsch oder bestehender GitHub-Zugang nicht mehr gültig.')}}
+ if(path==='logout'){githubToken=null;return {ok:true}}
+ if(path==='games'&&method==='GET'){const file=await githubCall(ghFile);return {revision:file.sha,games:JSON.parse(decode64(file.content))}}
+ if(path==='games'&&method==='PUT'){if(!githubToken)throw Error('Bitte mit PIN entsperren.');const file=await githubCall(ghFile,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:'Livestreamplanung aktualisieren',branch:'main',sha:data.revision,content:encode64(JSON.stringify(data.games,null,2))})});return {revision:file.content.sha}}
+ throw Error('Unbekannte Aktion.');
+}
+function downloadFile(content,type,filename){const url=URL.createObjectURL(new Blob([content],{type})),a=el('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function calendarText(){const esc=s=>String(s||'').replace(/\\/g,'\\\\').replace(/\r?\n/g,'\\n').replace(/;/g,'\\;').replace(/,/g,'\\,');const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Wasserball Livestreamplanung//DE','CALSCALE:GREGORIAN','X-WR-CALNAME:Wasserball Livestreamplanung','X-WR-TIMEZONE:Europe/Berlin'];for(const g of games){lines.push('BEGIN:VEVENT','UID:'+g.uid+'@wasserball-livestream','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,''));if(g.time){lines.push('DTSTART;TZID=Europe/Berlin:'+g.date.replace(/-/g,'')+'T'+g.time.replace(':','')+'00')}else{lines.push('DTSTART;VALUE=DATE:'+g.date.replace(/-/g,''),'TRANSP:TRANSPARENT')}lines.push('SUMMARY:'+esc(g.competition+': '+g.home+' – '+g.away),'LOCATION:'+esc(g.location),'DESCRIPTION:'+esc([g.status,...Object.entries(roles).map(([k,v])=>v+': '+(g.staff?.[k]||'Noch nicht belegt')),g.stream?'Livestream: '+g.stream:'',g.source?'Quelle: '+g.source:''].filter(Boolean).join('\n')));if(g.stream)lines.push('URL:'+esc(g.stream));lines.push('END:VEVENT')}lines.push('END:VCALENDAR');const folded=[];for(const line of lines){let chunk='';for(const c of line){if(new TextEncoder().encode(chunk+c).length>74){folded.push(chunk);chunk=' '+c}else chunk+=c}folded.push(chunk)}return folded.join('\r\n')+'\r\n'}
+$('ics').onclick=()=>downloadFile(calendarText(),'text/calendar;charset=utf-8','Wasserball_Livestream_Kalender.ics');
+$('csv').onclick=()=>{const quote=s=>'"'+String(s||'').replace(/"/g,'""')+'"';const rows=[['Datum','Anwurf','Wettbewerb','Heim','Gast','Hauptkamera','PTZ-Kamera','Regie','Livestream'],...games.map(g=>[g.date,g.time,g.competition,g.home,g.away,g.staff?.main,g.staff?.ptz,g.staff?.director,g.stream])];downloadFile('\uFEFF'+rows.map(r=>r.map(quote).join(';')).join('\r\n'),'text/csv;charset=utf-8','Wasserball_Livestream_Kalender.csv')};
+
+async function loadData(){try{if(hosted){const d=await api('games');games.splice(0,games.length,...d.games);revision=d.revision;$('mode').textContent='Gemeinsame Livestreamplanung · Änderungen werden auf GitHub gespeichert'}else{const raw=localStorage.getItem('wb-calendar-v2');if(raw){const data=JSON.parse(raw);if(!Array.isArray(data))throw Error('Ungültiger Browserspeicher');games.splice(0,games.length,...data)}$('mode').textContent='Lokale Version · Änderungen nur in diesem Browser · Telegram noch nicht aktiv';$('telegram').disabled=true}render()}catch(e){message('Daten konnten nicht geladen werden: '+e.message);$('unlock').disabled=true}}
+async function persist(next){if(saving)return false;saving=true;try{if(hosted){const result=await api('games','PUT',{games:next,revision});revision=result.revision}else{const old=[...games];games.splice(0,games.length,...next);if(!savedLocal()){games.splice(0,games.length,...old);return false}}games.splice(0,games.length,...next);render();message('Gespeichert.');return true}catch(e){message(e.message);if(hosted&&e.message.includes('geändert')){await loadData();showDay(activeDay)}return false}finally{saving=false}}
+function el(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n}
+function field(form,label,type,value,name,required=false){const l=el('label',label,'field'),input=el('input');input.type=type;input.value=value||'';input.name=name;input.required=required;input.maxLength=200;l.append(input);form.append(l);return input}
+async function unlock(){if(sessionPin||serverAuth){sessionPin=false;serverAuth=false;if(hosted)await api('logout','POST',{});$('unlock').textContent='Mit PIN bearbeiten';showDay(activeDay);return}if(!$('pinDialog').open)$('pinDialog').showModal()}
+$('pinForm').onsubmit=async e=>{e.preventDefault();const pin=$('pinInput').value;try{await api('login','POST',{pin});serverAuth=true;$('pinInput').value='';$('pinError').textContent='';$('pinDialog').close();$('unlock').textContent='Bearbeitung sperren';showDay(activeDay)}catch(e){$('pinError').textContent=e.message}};
+$('pinCancel').onclick=()=>$('pinDialog').close();$('unlock').onclick=unlock;
+function editable(){return sessionPin||serverAuth}
+function showDay(day){if(!day)return;activeDay=day;const box=$('detailContent');box.replaceChildren();box.append(el('h2',parseDate(day).toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric'})));const dayGames=games.filter(g=>g.date===day);if(!dayGames.length)box.append(el('p','Für diesen Tag sind keine Spiele angelegt.'));dayGames.forEach(g=>{const card=el('article',undefined,'game-detail');card.style.setProperty('--mark',colors[teamKey(g)]);card.append(el('h3',g.home+' – '+g.away),el('p',g.competition+' · '+(g.time?g.time+' Uhr':'Anwurfzeit offen')),el('p',g.location),el('p',g.status));const staff=g.staff||{};if(editable()){const form=el('form');for(const [key,label] of Object.entries(roles))field(form,label,'text',staff[key],key);field(form,'Livestream-Link (optional)','url',g.stream||'','stream');const save=el('button','Besetzung speichern');save.type='submit';form.append(save);form.onsubmit=async e=>{e.preventDefault();const values=Object.fromEntries(new FormData(form));const stream=values.stream.trim();delete values.stream;save.disabled=true;const ok=await persist(games.map(x=>x.uid===g.uid?{...x,staff:values,stream}:x));save.disabled=false;if(ok)showDay(day)};card.append(form);const del=el('button','Spiel löschen','danger');del.type='button';del.onclick=async()=>{if(confirm('Dieses Spiel wirklich löschen?\n'+g.home+' – '+g.away)){if(await persist(games.filter(x=>x.uid!==g.uid)))showDay(day)}};card.append(del)}else{const dl=el('dl');for(const [key,label] of Object.entries(roles)){dl.append(el('dt',label),el('dd',staff[key]||'Noch nicht belegt'))}card.append(dl)}if(g.stream&&/^https?:\/\//.test(g.stream)){const a=el('a','Livestream öffnen ↗');a.href=g.stream;a.target='_blank';a.rel='noopener';card.append(a,el('br'))}if(g.source&&/^https?:\/\//.test(g.source)){const link=el('a','Spielplanquelle ↗');link.href=g.source;link.target='_blank';link.rel='noopener';card.append(link)}box.append(card)});if(editable()){const add=el('button','+ Spiel an diesem Tag anlegen');add.onclick=()=>newGame(day);box.append(add)}else{const b=el('button','Mit PIN bearbeiten / Spiel anlegen');b.onclick=unlock;box.append(b)}if(!$('details').open)$('details').showModal()}
+function newGame(day){const box=$('detailContent');box.replaceChildren(el('h2','Neues Heimspiel'));const f=el('form');field(f,'Datum','date',day,'date',true);field(f,'Anwurfzeit (optional)','time','','time');const label=el('label','Wettbewerb','field'),select=el('select');select.name='competition';for(const v of ['Bundesliga Herren','Bundesliga Damen','U18-Bundesliga','Euro Cup Herren','Euro Cup Damen']){const o=el('option',v);o.value=v;select.append(o)}label.append(select);f.append(label);field(f,'Heimmannschaft','text','','home',true);field(f,'Gastmannschaft','text','','away',true);field(f,'Spielort','text','Berlin','location',true);field(f,'Livestream-Link (optional)','url','','stream');for(const [key,label] of Object.entries(roles))field(f,label,'text','',key);const save=el('button','Spiel anlegen');save.type='submit';const back=el('button','Zurück');back.type='button';back.onclick=()=>showDay(day);f.append(save,back);f.onsubmit=async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(f));const staff={main:d.main.trim(),ptz:d.ptz.trim(),director:d.director.trim()};delete d.main;delete d.ptz;delete d.director;save.disabled=true;const ok=await persist([...games,{...d,home:d.home.trim(),away:d.away.trim(),uid:crypto.randomUUID(),status:'Manuell angelegt',source:'',staff}].sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)));save.disabled=false;if(ok)showDay(d.date)};box.append(f)}
+const baseRender=render;render=function(){baseRender();document.querySelectorAll('.day').forEach(cell=>{const n=cell.dataset.date;if(!n)return;const euro=games.some(g=>g.date===n&&g.competition.includes('Euro Cup'));if(euro){cell.classList.add('euro-day');const badge=el('span','EURO CUP','euro-badge');cell.append(badge)}cell.onclick=()=>showDay(n);cell.onkeydown=e=>{if(e.target===cell&&(e.key==='Enter'||e.key===' ')){e.preventDefault();showDay(n)}}});document.querySelectorAll('.event').forEach(b=>{const g=games.find(g=>b.dataset.uid===g.uid);if(g)b.style.background=backgrounds[teamKey(g)]});};
+showDetails=g=>showDay(g.date);
+$('export').onclick=()=>{const blob=new Blob([JSON.stringify(games,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='Wasserball_Kalender_Sicherung.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+loadData();
+
+</script></html>

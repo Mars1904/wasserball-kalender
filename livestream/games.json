@@ -1,0 +1,478 @@
+[
+  {
+    "date": "2026-10-03",
+    "time": "16:00",
+    "competition": "Bundesliga Damen",
+    "home": "Wfr. Spandau 04",
+    "away": "ETV Hamburg",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "879a803f37fc530a307ab78b8bd640a1f0a732f4",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-10-10",
+    "time": "15:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "SV Cannstatt",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "d2f8c07824b4ac29b147d58c9a5257939445bc51",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-10-17",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "SV Cannstatt",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "cbc9f8efb366f1607aa79cbb7e1e199850b9b31d",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-10-24",
+    "time": "14:00",
+    "competition": "Bundesliga Damen",
+    "home": "Wfr. Spandau 04",
+    "away": "SSV Esslingen",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "5b153008b4b092fab60eb0950f668c4758a75043",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-10-24",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "SV Krefeld 1972",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "a04077c7183699b92b6cd7fc76b876fb1946cca6",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-10-29",
+    "time": "19:00",
+    "competition": "Euro Cup Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "VK Šabac Elixir",
+    "location": "Sport- und Lehrschwimmhalle Schöneberg, Sachsendamm 11, 10829 Berlin",
+    "status": "Vereinsankündigung",
+    "source": "https://spandau04.de/wasserball/spandau04-vk-sabac-euro-cup-29-oktober-2026/",
+    "uid": "5536a6ffd3618e5455fc3d1c90507db7c3f282e15d755171199c7b2db0d56ae4",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-10-31",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "Wfr. Spandau 04",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "657ea49b90d114642f30cc2bd43a6587313336e5",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-11-07",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "White Sharks Hannover",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "fdb3b1851e2ee19cfe821c13ba9da6c3ce8affee",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-11-12",
+    "time": "19:00",
+    "competition": "Euro Cup Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "Rari Nantes Savona",
+    "location": "Sport- und Lehrschwimmhalle Schöneberg, Sachsendamm 11, 10829 Berlin",
+    "status": "Vereinsankündigung",
+    "source": "https://spandau04.de/wasserball/spandau04-savona-euro-cup-12-november-2026/",
+    "uid": "7cd73a49ac0e0089d561455aa0f80d3af2b31bd234b53668cc8d67d3d47cf2cb",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-11-21",
+    "time": "14:00",
+    "competition": "U18-Bundesliga",
+    "home": "SG Neukölln Berlin",
+    "away": "ASC Duisburg",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "388c8e7d11a89ad48e94f1b0af33f1b6975cad94",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-11-21",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "ASC Duisburg",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "c5bbbe556a03cfe33f7ffa51fabd7bf956adfb03",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-11-21",
+    "time": "18:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "OSC Potsdam",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "fe84e56ac45025d2af5e735053cdee86ac32079c",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-11-28",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "Waspo 98 Hannover",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "16:00 Uhr laut Liga; Vereinsmeldung bezeichnet die Zeit als vorläufig",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "1710feea3bc4111b01876ed2e63952fc1e1e2040",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-12-03",
+    "time": "19:00",
+    "competition": "Euro Cup Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "Primorac Kotor",
+    "location": "Sport- und Lehrschwimmhalle Schöneberg, Sachsendamm 11, 10829 Berlin",
+    "status": "Vereinsankündigung",
+    "source": "https://spandau04.de/wasserball/spandau04-sabac-euro-cup-19-november-2026/",
+    "uid": "bb2a22bb9b078e7029c7e00ab06a482963661ce66a2151e3950346a242cece2c",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-12-05",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "Waspo 98 Hannover",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "33fc4214fdb3c7affc9d3601d0aa410abc4605d0",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2026-12-12",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "ASC Duisburg",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "e56555ad7714ed0151210a6702442987b77bf41f",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2027-01-09",
+    "time": "16:00",
+    "competition": "U18-Bundesliga",
+    "home": "SG Neukölln Berlin",
+    "away": "SV Krefeld 1972",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "ff8b1a2ac42c059f8a8d6ca608e18f5d178082c7",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2027-01-27",
+    "time": "",
+    "competition": "Euro Cup Damen",
+    "home": "Wfr. Spandau 04",
+    "away": "KINEF Surgutneftegaz Kirishi",
+    "location": "Heimspiel Berlin; Halle noch zu bestätigen",
+    "status": "Vorläufig: Datum laut Flashscore; Anwurfzeit offen, Verbandsbestätigung ausstehend",
+    "source": "https://www.flashscore.com/water-polo/europe/euro-cup-women/fixtures/",
+    "uid": "9274a78566bfa7d4753cbc6bcd95245196362a579aa2c8a87fdbe5de09dfebb7",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2027-01-30",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "Wfr. Spandau 04",
+    "away": "SG Neukölln Berlin",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "9a5c4bd3c0a2a5cf7ee152de0c341511d1197ef9",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2027-02-06",
+    "time": "",
+    "competition": "Euro Cup Damen",
+    "home": "Wfr. Spandau 04",
+    "away": "Dunaújváros",
+    "location": "Heimspiel Berlin; Halle noch zu bestätigen",
+    "status": "Vorläufig: Datum laut Flashscore; Anwurfzeit offen, Verbandsbestätigung ausstehend",
+    "source": "https://www.flashscore.com/water-polo/europe/euro-cup-women/fixtures/",
+    "uid": "74186b57b1126bd688faa97fe9e3c762aa4fc7166d1eab11f376f35b11cb883f",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2027-02-06",
+    "time": "16:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "SV Krefeld 1972",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "d5e2740ccee67c6e7aadfadf6c483cd740b4ec97",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2027-02-13",
+    "time": "16:00",
+    "competition": "Bundesliga Damen",
+    "home": "Wfr. Spandau 04",
+    "away": "Uerdinger SV 08",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "0ac3af5031d06a72dbb79adbd3e9da173690a7c2",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2027-02-20",
+    "time": "16:00",
+    "competition": "U18-Bundesliga",
+    "home": "SG Neukölln Berlin",
+    "away": "OSC Potsdam",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "2941c80feb438d0404ff2a7cd773fbe7c8bbfd5d",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2027-02-20",
+    "time": "18:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "OSC Potsdam",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "333be5a1d0c6c9e17ec2536102cb477327a1aaeb",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2027-03-13",
+    "time": "16:00",
+    "competition": "U18-Bundesliga",
+    "home": "SG Neukölln Berlin",
+    "away": "White Sharks Hannover",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "d9f261a9eabb49d08777b0df0346cbcd8686b87c",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2027-03-13",
+    "time": "18:00",
+    "competition": "Bundesliga Herren",
+    "home": "SG Neukölln Berlin",
+    "away": "White Sharks Hannover",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "af2856c79ebfcdf1241278ddcd02da3729322ea1",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2027-03-14",
+    "time": "12:00",
+    "competition": "U18-Bundesliga",
+    "home": "SG Neukölln Berlin",
+    "away": "SV Cannstatt",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "50654167a5a6dcf8987dab91c837264e1dd83ef5",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  },
+  {
+    "date": "2027-04-18",
+    "time": "13:00",
+    "competition": "Bundesliga Damen",
+    "home": "Wfr. Spandau 04",
+    "away": "SV Blau-Weiß Bochum",
+    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
+    "status": "Laut offiziellem Ligaspielplan",
+    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
+    "uid": "e815402201ed8552f1598577f797ec718656d758",
+    "staff": {
+      "main": "",
+      "ptz": "",
+      "director": ""
+    },
+    "stream": ""
+  }
+]
