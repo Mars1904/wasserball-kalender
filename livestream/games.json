@@ -255,23 +255,6 @@
     "stream": ""
   },
   {
-    "date": "2026-12-12",
-    "time": "16:00",
-    "competition": "Bundesliga Herren",
-    "home": "Wfr. Spandau 04",
-    "away": "ASC Duisburg",
-    "location": "Berlin (Halle im Ligadatensatz nicht angegeben)",
-    "status": "Laut offiziellem Ligaspielplan",
-    "source": "https://content.wasserball-bundesliga.de/storage/content/allSchedules.json",
-    "uid": "e56555ad7714ed0151210a6702442987b77bf41f",
-    "staff": {
-      "main": "",
-      "ptz": "",
-      "director": ""
-    },
-    "stream": ""
-  },
-  {
     "date": "2027-01-09",
     "time": "16:00",
     "competition": "U18-Bundesliga",
